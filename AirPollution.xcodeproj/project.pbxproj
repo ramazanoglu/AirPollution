@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378CE1FDAC59C00F8C708 /* AppDelegate.swift */; };
+		224378D11FDAC59C00F8C708 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378D01FDAC59C00F8C708 /* ViewController.swift */; };
+		224378D41FDAC59C00F8C708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224378D21FDAC59C00F8C708 /* Main.storyboard */; };
+		224378D61FDAC59C00F8C708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224378D51FDAC59C00F8C708 /* Assets.xcassets */; };
+		224378D91FDAC59C00F8C708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224378D71FDAC59C00F8C708 /* LaunchScreen.storyboard */; };
+		224378E41FDAC59C00F8C708 /* AirPollutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378E31FDAC59C00F8C708 /* AirPollutionTests.swift */; };
+		224378EF1FDAC59C00F8C708 /* AirPollutionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		224378E01FDAC59C00F8C708 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224378C31FDAC59C00F8C708 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 224378CA1FDAC59C00F8C708;
+			remoteInfo = AirPollution;
+		};
+		224378EB1FDAC59C00F8C708 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224378C31FDAC59C00F8C708 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 224378CA1FDAC59C00F8C708;
+			remoteInfo = AirPollution;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		224378CB1FDAC59C00F8C708 /* AirPollution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirPollution.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		224378CE1FDAC59C00F8C708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		224378D01FDAC59C00F8C708 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		224378D31FDAC59C00F8C708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		224378D51FDAC59C00F8C708 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		224378D81FDAC59C00F8C708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		224378DA1FDAC59C00F8C708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		224378DF1FDAC59C00F8C708 /* AirPollutionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirPollutionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		224378E31FDAC59C00F8C708 /* AirPollutionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPollutionTests.swift; sourceTree = "<group>"; };
+		224378E51FDAC59C00F8C708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		224378EA1FDAC59C00F8C708 /* AirPollutionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirPollutionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPollutionUITests.swift; sourceTree = "<group>"; };
+		224378F01FDAC59C00F8C708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		224378C81FDAC59C00F8C708 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224378DC1FDAC59C00F8C708 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224378E71FDAC59C00F8C708 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		224378C21FDAC59C00F8C708 = {
+			isa = PBXGroup;
+			children = (
+				224378CD1FDAC59C00F8C708 /* AirPollution */,
+				224378E21FDAC59C00F8C708 /* AirPollutionTests */,
+				224378ED1FDAC59C00F8C708 /* AirPollutionUITests */,
+				224378CC1FDAC59C00F8C708 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		224378CC1FDAC59C00F8C708 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				224378CB1FDAC59C00F8C708 /* AirPollution.app */,
+				224378DF1FDAC59C00F8C708 /* AirPollutionTests.xctest */,
+				224378EA1FDAC59C00F8C708 /* AirPollutionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		224378CD1FDAC59C00F8C708 /* AirPollution */ = {
+			isa = PBXGroup;
+			children = (
+				224378CE1FDAC59C00F8C708 /* AppDelegate.swift */,
+				224378D01FDAC59C00F8C708 /* ViewController.swift */,
+				224378D21FDAC59C00F8C708 /* Main.storyboard */,
+				224378D51FDAC59C00F8C708 /* Assets.xcassets */,
+				224378D71FDAC59C00F8C708 /* LaunchScreen.storyboard */,
+				224378DA1FDAC59C00F8C708 /* Info.plist */,
+			);
+			path = AirPollution;
+			sourceTree = "<group>";
+		};
+		224378E21FDAC59C00F8C708 /* AirPollutionTests */ = {
+			isa = PBXGroup;
+			children = (
+				224378E31FDAC59C00F8C708 /* AirPollutionTests.swift */,
+				224378E51FDAC59C00F8C708 /* Info.plist */,
+			);
+			path = AirPollutionTests;
+			sourceTree = "<group>";
+		};
+		224378ED1FDAC59C00F8C708 /* AirPollutionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */,
+				224378F01FDAC59C00F8C708 /* Info.plist */,
+			);
+			path = AirPollutionUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		224378CA1FDAC59C00F8C708 /* AirPollution */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 224378F31FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollution" */;
+			buildPhases = (
+				224378C71FDAC59C00F8C708 /* Sources */,
+				224378C81FDAC59C00F8C708 /* Frameworks */,
+				224378C91FDAC59C00F8C708 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AirPollution;
+			productName = AirPollution;
+			productReference = 224378CB1FDAC59C00F8C708 /* AirPollution.app */;
+			productType = "com.apple.product-type.application";
+		};
+		224378DE1FDAC59C00F8C708 /* AirPollutionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 224378F61FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollutionTests" */;
+			buildPhases = (
+				224378DB1FDAC59C00F8C708 /* Sources */,
+				224378DC1FDAC59C00F8C708 /* Frameworks */,
+				224378DD1FDAC59C00F8C708 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				224378E11FDAC59C00F8C708 /* PBXTargetDependency */,
+			);
+			name = AirPollutionTests;
+			productName = AirPollutionTests;
+			productReference = 224378DF1FDAC59C00F8C708 /* AirPollutionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		224378E91FDAC59C00F8C708 /* AirPollutionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 224378F91FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollutionUITests" */;
+			buildPhases = (
+				224378E61FDAC59C00F8C708 /* Sources */,
+				224378E71FDAC59C00F8C708 /* Frameworks */,
+				224378E81FDAC59C00F8C708 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				224378EC1FDAC59C00F8C708 /* PBXTargetDependency */,
+			);
+			name = AirPollutionUITests;
+			productName = AirPollutionUITests;
+			productReference = 224378EA1FDAC59C00F8C708 /* AirPollutionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		224378C31FDAC59C00F8C708 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = zigzag;
+				TargetAttributes = {
+					224378CA1FDAC59C00F8C708 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					224378DE1FDAC59C00F8C708 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 224378CA1FDAC59C00F8C708;
+					};
+					224378E91FDAC59C00F8C708 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 224378CA1FDAC59C00F8C708;
+					};
+				};
+			};
+			buildConfigurationList = 224378C61FDAC59C00F8C708 /* Build configuration list for PBXProject "AirPollution" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 224378C21FDAC59C00F8C708;
+			productRefGroup = 224378CC1FDAC59C00F8C708 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				224378CA1FDAC59C00F8C708 /* AirPollution */,
+				224378DE1FDAC59C00F8C708 /* AirPollutionTests */,
+				224378E91FDAC59C00F8C708 /* AirPollutionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		224378C91FDAC59C00F8C708 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224378D91FDAC59C00F8C708 /* LaunchScreen.storyboard in Resources */,
+				224378D61FDAC59C00F8C708 /* Assets.xcassets in Resources */,
+				224378D41FDAC59C00F8C708 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224378DD1FDAC59C00F8C708 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224378E81FDAC59C00F8C708 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		224378C71FDAC59C00F8C708 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224378D11FDAC59C00F8C708 /* ViewController.swift in Sources */,
+				224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224378DB1FDAC59C00F8C708 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224378E41FDAC59C00F8C708 /* AirPollutionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224378E61FDAC59C00F8C708 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224378EF1FDAC59C00F8C708 /* AirPollutionUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		224378E11FDAC59C00F8C708 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 224378CA1FDAC59C00F8C708 /* AirPollution */;
+			targetProxy = 224378E01FDAC59C00F8C708 /* PBXContainerItemProxy */;
+		};
+		224378EC1FDAC59C00F8C708 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 224378CA1FDAC59C00F8C708 /* AirPollution */;
+			targetProxy = 224378EB1FDAC59C00F8C708 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		224378D21FDAC59C00F8C708 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				224378D31FDAC59C00F8C708 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		224378D71FDAC59C00F8C708 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				224378D81FDAC59C00F8C708 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		224378F11FDAC59C00F8C708 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		224378F21FDAC59C00F8C708 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		224378F41FDAC59C00F8C708 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AirPollution/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zigzag.AirPollution;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		224378F51FDAC59C00F8C708 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AirPollution/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zigzag.AirPollution;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		224378F71FDAC59C00F8C708 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AirPollutionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zigzag.AirPollutionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirPollution.app/AirPollution";
+			};
+			name = Debug;
+		};
+		224378F81FDAC59C00F8C708 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AirPollutionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zigzag.AirPollutionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirPollution.app/AirPollution";
+			};
+			name = Release;
+		};
+		224378FA1FDAC59C00F8C708 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AirPollutionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zigzag.AirPollutionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AirPollution;
+			};
+			name = Debug;
+		};
+		224378FB1FDAC59C00F8C708 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AirPollutionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zigzag.AirPollutionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AirPollution;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		224378C61FDAC59C00F8C708 /* Build configuration list for PBXProject "AirPollution" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				224378F11FDAC59C00F8C708 /* Debug */,
+				224378F21FDAC59C00F8C708 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		224378F31FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollution" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				224378F41FDAC59C00F8C708 /* Debug */,
+				224378F51FDAC59C00F8C708 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		224378F61FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollutionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				224378F71FDAC59C00F8C708 /* Debug */,
+				224378F81FDAC59C00F8C708 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		224378F91FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollutionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				224378FA1FDAC59C00F8C708 /* Debug */,
+				224378FB1FDAC59C00F8C708 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 224378C31FDAC59C00F8C708 /* Project object */;
+}
