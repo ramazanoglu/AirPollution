@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		223F8BE61FE2743800752BF2 /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BE51FE2743800752BF2 /* Departure.swift */; };
+		223F8BE81FE27FB400752BF2 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */; };
+		223F8BEB1FE2816800752BF2 /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BEA1FE2816800752BF2 /* StationAnnotation.swift */; };
+		223F8BED1FE2939600752BF2 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */; };
 		224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378CE1FDAC59C00F8C708 /* AppDelegate.swift */; };
 		224378D11FDAC59C00F8C708 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378D01FDAC59C00F8C708 /* ViewController.swift */; };
 		224378D41FDAC59C00F8C708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224378D21FDAC59C00F8C708 /* Main.storyboard */; };
@@ -14,6 +18,17 @@
 		224378D91FDAC59C00F8C708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224378D71FDAC59C00F8C708 /* LaunchScreen.storyboard */; };
 		224378E41FDAC59C00F8C708 /* AirPollutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378E31FDAC59C00F8C708 /* AirPollutionTests.swift */; };
 		224378EF1FDAC59C00F8C708 /* AirPollutionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */; };
+		228740391FE13E7100D7B0EA /* VVSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228740381FE13E7100D7B0EA /* VVSClient.swift */; };
+		2287403B1FE13EBF00D7B0EA /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287403A1FE13EBF00D7B0EA /* Station.swift */; };
+		228740411FE1641900D7B0EA /* station_location_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 228740401FE1641900D7B0EA /* station_location_data.txt */; };
+		22B876351FE03C4E00AFE4DD /* AirDataAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B876341FE03C4E00AFE4DD /* AirDataAnnotation.swift */; };
+		22B876371FE03C8200AFE4DD /* AirDataAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B876361FE03C8200AFE4DD /* AirDataAnnotationView.swift */; };
+		22C3B77E1FDACAB200FE9919 /* AirDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3B77D1FDACAB200FE9919 /* AirDataClient.swift */; };
+		22C3B7811FDAD2EE00FE9919 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3B7801FDAD2EE00FE9919 /* SensorData.swift */; };
+		22C3B7831FDAD34200FE9919 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3B7821FDAD34200FE9919 /* AirData.swift */; };
+		9599C672AEFF5FA447153801 /* Pods_AirPollutionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7909568D3B9EE577ABB997D7 /* Pods_AirPollutionUITests.framework */; };
+		D7A5B8D955E453C39FD85B32 /* Pods_AirPollution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FBE8340CB5213130E65EEB /* Pods_AirPollution.framework */; };
+		DE05609EFEE2A819486E12DF /* Pods_AirPollutionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07FDB5A04A4AB16953BC4F4 /* Pods_AirPollutionTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		223F8BE51FE2743800752BF2 /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
+		223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
+		223F8BEA1FE2816800752BF2 /* StationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationAnnotation.swift; sourceTree = "<group>"; };
+		223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		224378CB1FDAC59C00F8C708 /* AirPollution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirPollution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		224378CE1FDAC59C00F8C708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		224378D01FDAC59C00F8C708 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +66,23 @@
 		224378EA1FDAC59C00F8C708 /* AirPollutionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirPollutionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPollutionUITests.swift; sourceTree = "<group>"; };
 		224378F01FDAC59C00F8C708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		228740381FE13E7100D7B0EA /* VVSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VVSClient.swift; sourceTree = "<group>"; };
+		2287403A1FE13EBF00D7B0EA /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		228740401FE1641900D7B0EA /* station_location_data.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = station_location_data.txt; sourceTree = "<group>"; };
+		22B876341FE03C4E00AFE4DD /* AirDataAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataAnnotation.swift; sourceTree = "<group>"; };
+		22B876361FE03C8200AFE4DD /* AirDataAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataAnnotationView.swift; sourceTree = "<group>"; };
+		22C3B77D1FDACAB200FE9919 /* AirDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataClient.swift; sourceTree = "<group>"; };
+		22C3B7801FDAD2EE00FE9919 /* SensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorData.swift; sourceTree = "<group>"; };
+		22C3B7821FDAD34200FE9919 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
+		33B825CE9650064C77611146 /* Pods-AirPollutionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPollutionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirPollutionTests/Pods-AirPollutionTests.debug.xcconfig"; sourceTree = "<group>"; };
+		546A030E3E755D02309C6941 /* Pods-AirPollution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPollution.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirPollution/Pods-AirPollution.release.xcconfig"; sourceTree = "<group>"; };
+		7909568D3B9EE577ABB997D7 /* Pods_AirPollutionUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirPollutionUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BD2CDE66E06F0792077ECC9 /* Pods-AirPollutionUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPollutionUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirPollutionUITests/Pods-AirPollutionUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B07FDB5A04A4AB16953BC4F4 /* Pods_AirPollutionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirPollutionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B18E216B77E5D32C5C793BBF /* Pods-AirPollutionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPollutionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirPollutionUITests/Pods-AirPollutionUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DFAF28625059477432A7A794 /* Pods-AirPollutionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPollutionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirPollutionTests/Pods-AirPollutionTests.release.xcconfig"; sourceTree = "<group>"; };
+		E7FBE8340CB5213130E65EEB /* Pods_AirPollution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirPollution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0402023F52E45DDD523AF9D /* Pods-AirPollution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPollution.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirPollution/Pods-AirPollution.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A5B8D955E453C39FD85B32 /* Pods_AirPollution.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE05609EFEE2A819486E12DF /* Pods_AirPollutionTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +106,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9599C672AEFF5FA447153801 /* Pods_AirPollutionUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		223F8BE91FE2812B00752BF2 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				22B876341FE03C4E00AFE4DD /* AirDataAnnotation.swift */,
+				223F8BEA1FE2816800752BF2 /* StationAnnotation.swift */,
+			);
+			path = Annotation;
+			sourceTree = "<group>";
+		};
 		224378C21FDAC59C00F8C708 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +129,8 @@
 				224378E21FDAC59C00F8C708 /* AirPollutionTests */,
 				224378ED1FDAC59C00F8C708 /* AirPollutionUITests */,
 				224378CC1FDAC59C00F8C708 /* Products */,
+				2430D9DBB7F8C195DE18798B /* Pods */,
+				8821A27E225D9ADBAEBFBCA8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +147,15 @@
 		224378CD1FDAC59C00F8C708 /* AirPollution */ = {
 			isa = PBXGroup;
 			children = (
+				22C3B77C1FDACA7B00FE9919 /* Controller */,
+				22C3B77B1FDACA7500FE9919 /* Model */,
+				22C3B77A1FDACA7000FE9919 /* View */,
 				224378CE1FDAC59C00F8C708 /* AppDelegate.swift */,
-				224378D01FDAC59C00F8C708 /* ViewController.swift */,
 				224378D21FDAC59C00F8C708 /* Main.storyboard */,
 				224378D51FDAC59C00F8C708 /* Assets.xcassets */,
 				224378D71FDAC59C00F8C708 /* LaunchScreen.storyboard */,
 				224378DA1FDAC59C00F8C708 /* Info.plist */,
+				228740401FE1641900D7B0EA /* station_location_data.txt */,
 			);
 			path = AirPollution;
 			sourceTree = "<group>";
@@ -125,6 +178,69 @@
 			path = AirPollutionUITests;
 			sourceTree = "<group>";
 		};
+		22C3B77A1FDACA7000FE9919 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22B876361FE03C8200AFE4DD /* AirDataAnnotationView.swift */,
+				223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22C3B77B1FDACA7500FE9919 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				223F8BE91FE2812B00752BF2 /* Annotation */,
+				22C3B77F1FDAD29900FE9919 /* Client */,
+				22C3B7801FDAD2EE00FE9919 /* SensorData.swift */,
+				22C3B7821FDAD34200FE9919 /* AirData.swift */,
+				2287403A1FE13EBF00D7B0EA /* Station.swift */,
+				223F8BE51FE2743800752BF2 /* Departure.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		22C3B77C1FDACA7B00FE9919 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				224378D01FDAC59C00F8C708 /* ViewController.swift */,
+				223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		22C3B77F1FDAD29900FE9919 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				22C3B77D1FDACAB200FE9919 /* AirDataClient.swift */,
+				228740381FE13E7100D7B0EA /* VVSClient.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		2430D9DBB7F8C195DE18798B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F0402023F52E45DDD523AF9D /* Pods-AirPollution.debug.xcconfig */,
+				546A030E3E755D02309C6941 /* Pods-AirPollution.release.xcconfig */,
+				33B825CE9650064C77611146 /* Pods-AirPollutionTests.debug.xcconfig */,
+				DFAF28625059477432A7A794 /* Pods-AirPollutionTests.release.xcconfig */,
+				B18E216B77E5D32C5C793BBF /* Pods-AirPollutionUITests.debug.xcconfig */,
+				7BD2CDE66E06F0792077ECC9 /* Pods-AirPollutionUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8821A27E225D9ADBAEBFBCA8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7FBE8340CB5213130E65EEB /* Pods_AirPollution.framework */,
+				B07FDB5A04A4AB16953BC4F4 /* Pods_AirPollutionTests.framework */,
+				7909568D3B9EE577ABB997D7 /* Pods_AirPollutionUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 224378F31FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollution" */;
 			buildPhases = (
+				97D77C048540DD3C675781B5 /* [CP] Check Pods Manifest.lock */,
 				224378C71FDAC59C00F8C708 /* Sources */,
 				224378C81FDAC59C00F8C708 /* Frameworks */,
 				224378C91FDAC59C00F8C708 /* Resources */,
+				09BC4CD33E7C8062F0224A77 /* [CP] Embed Pods Frameworks */,
+				209203947F1FB33F68DA73ED /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 224378F61FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollutionTests" */;
 			buildPhases = (
+				702E0BECD3F4EFC6FF89BA52 /* [CP] Check Pods Manifest.lock */,
 				224378DB1FDAC59C00F8C708 /* Sources */,
 				224378DC1FDAC59C00F8C708 /* Frameworks */,
 				224378DD1FDAC59C00F8C708 /* Resources */,
+				501075377BE4A8553B9E003B /* [CP] Embed Pods Frameworks */,
+				F97974CC6E96C5C83EBBE3BF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +289,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 224378F91FDAC59C00F8C708 /* Build configuration list for PBXNativeTarget "AirPollutionUITests" */;
 			buildPhases = (
+				3F28C3CF0A3587D2F8F758A7 /* [CP] Check Pods Manifest.lock */,
 				224378E61FDAC59C00F8C708 /* Sources */,
 				224378E71FDAC59C00F8C708 /* Frameworks */,
 				224378E81FDAC59C00F8C708 /* Resources */,
+				AD4AF70A84AA76CFBEA2AC36 /* [CP] Embed Pods Frameworks */,
+				507CD00392D4209BAA83BBEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,6 +359,7 @@
 			files = (
 				224378D91FDAC59C00F8C708 /* LaunchScreen.storyboard in Resources */,
 				224378D61FDAC59C00F8C708 /* Assets.xcassets in Resources */,
+				228740411FE1641900D7B0EA /* station_location_data.txt in Resources */,
 				224378D41FDAC59C00F8C708 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,13 +380,174 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09BC4CD33E7C8062F0224A77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AirPollution/Pods-AirPollution-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirPollution/Pods-AirPollution-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		209203947F1FB33F68DA73ED /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirPollution/Pods-AirPollution-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F28C3CF0A3587D2F8F758A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AirPollutionUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		501075377BE4A8553B9E003B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirPollutionTests/Pods-AirPollutionTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		507CD00392D4209BAA83BBEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirPollutionUITests/Pods-AirPollutionUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		702E0BECD3F4EFC6FF89BA52 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AirPollutionTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97D77C048540DD3C675781B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AirPollution-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD4AF70A84AA76CFBEA2AC36 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirPollutionUITests/Pods-AirPollutionUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F97974CC6E96C5C83EBBE3BF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirPollutionTests/Pods-AirPollutionTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		224378C71FDAC59C00F8C708 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				224378D11FDAC59C00F8C708 /* ViewController.swift in Sources */,
+				22C3B7831FDAD34200FE9919 /* AirData.swift in Sources */,
+				22B876371FE03C8200AFE4DD /* AirDataAnnotationView.swift in Sources */,
 				224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */,
+				223F8BE61FE2743800752BF2 /* Departure.swift in Sources */,
+				22C3B77E1FDACAB200FE9919 /* AirDataClient.swift in Sources */,
+				2287403B1FE13EBF00D7B0EA /* Station.swift in Sources */,
+				223F8BEB1FE2816800752BF2 /* StationAnnotation.swift in Sources */,
+				22B876351FE03C4E00AFE4DD /* AirDataAnnotation.swift in Sources */,
+				228740391FE13E7100D7B0EA /* VVSClient.swift in Sources */,
+				22C3B7811FDAD2EE00FE9919 /* SensorData.swift in Sources */,
+				223F8BED1FE2939600752BF2 /* DepartureTableViewCell.swift in Sources */,
+				223F8BE81FE27FB400752BF2 /* DeparturesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +711,7 @@
 		};
 		224378F41FDAC59C00F8C708 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0402023F52E45DDD523AF9D /* Pods-AirPollution.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -438,6 +726,7 @@
 		};
 		224378F51FDAC59C00F8C708 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 546A030E3E755D02309C6941 /* Pods-AirPollution.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,6 +741,7 @@
 		};
 		224378F71FDAC59C00F8C708 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33B825CE9650064C77611146 /* Pods-AirPollutionTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -468,6 +758,7 @@
 		};
 		224378F81FDAC59C00F8C708 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFAF28625059477432A7A794 /* Pods-AirPollutionTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +775,7 @@
 		};
 		224378FA1FDAC59C00F8C708 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B18E216B77E5D32C5C793BBF /* Pods-AirPollutionUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -499,6 +791,7 @@
 		};
 		224378FB1FDAC59C00F8C708 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BD2CDE66E06F0792077ECC9 /* Pods-AirPollutionUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
