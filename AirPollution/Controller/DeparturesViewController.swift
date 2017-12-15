@@ -59,6 +59,12 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.directionLabel.text = departure.direction
         cell.lineLabel.text = departure.number
         
+        if departure.delay != "0" {
+            cell.backgroundColor = UIColor.red
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
+        
         return cell
         
     }
