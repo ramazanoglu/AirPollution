@@ -16,7 +16,7 @@ class AirDataClient: NSObject {
     
     func getAirData(userLatitude:Double, userLongitude:Double, completinHandler: @escaping (_ result: [AirData], _ error: String?) -> Void) {
         
-        let urlRequest = "https://api.luftdaten.info/v1/filter/area=" + String(userLatitude) + "," + String(userLongitude) + ",2"
+        let urlRequest = "https://api.luftdaten.info/v1/filter/area=" + String(userLatitude) + "," + String(userLongitude) + ",5"
         
         Alamofire.request(urlRequest).responseJSON { response in
             

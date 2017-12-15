@@ -16,47 +16,51 @@ class VVSClient: NSObject {
     var stationLocationDictionary = [String:(Double, Double)]()
     
     
-    func getStations(completinHandler: @escaping (_ result: [Station], _ error: String?) -> Void) {
+    func getStations(completionHandler: @escaping (_ result: [Station]?, _ error: String?) -> Void) {
         let urlRequest = "https://efa-api.asw.io/api/v1/station/"
         
-        Alamofire.request(urlRequest).responseJSON { response in
+        Alamofire.request(urlRequest).validate().responseJSON { response in
             
-            print("Result: \(response.result)")                         // response serialization result
-            
-            if let json = response.result.value {
-                print("JSON created") // serialized json response
+            print("Result: \(response.result)")
+            switch response.result {
+            case .success:
+                print("Validation Successful")
                 
-                
-                if let array = json as? [Any] {
+                if let json = response.result.value {
+                    print("JSON created") 
                     
-                    var stationArray = [Station]()
-                    
-                    for object in array {
+                    if let array = json as? [Any] {
                         
-                        let station = Station(fromDictionary: object as! [String:AnyObject])
+                        var stationArray = [Station]()
                         
-                        guard station != nil else  {
-                            continue
+                        for object in array {
+                            
+                            let station = Station(fromDictionary: object as! [String:AnyObject])
+                            
+                            guard station != nil else  {
+                                continue
+                            }
+                            
+                            guard self.stationLocationDictionary[(station?.stationId)!] != nil else {
+                                print("Cannot find the location for \(String(describing: station?.stationId))")
+                                continue
+                            }
+                            
+                            station?.latitude = self.stationLocationDictionary[(station?.stationId)!]?.1
+                            station?.longitude = self.stationLocationDictionary[(station?.stationId)!]?.0
+                            
+                            stationArray.append(station!)
+                            
                         }
                         
-                        guard self.stationLocationDictionary[(station?.stationId)!] != nil else {
-                            print("Cannot find the location for \(station?.stationId)")
-                            continue
-                        }
-                        
-                        station?.latitude = self.stationLocationDictionary[(station?.stationId)!]?.1
-                        station?.longitude = self.stationLocationDictionary[(station?.stationId)!]?.0
-                        
-                        
-                        stationArray.append(station!)
-                        
+                        completionHandler(stationArray, nil)
                         
                     }
                     
-                    completinHandler(stationArray, nil)
-                    
                 }
-                
+            case .failure(let error):
+                print(error)
+                completionHandler(nil, error.localizedDescription)
             }
         }
     }
@@ -88,37 +92,42 @@ class VVSClient: NSObject {
         }
     }
     
-    func getDeparturesForStation(stationId:String, completionHandler: @escaping (_ result: [Departure], _ error: String?) -> Void) {
+    func getDeparturesForStation(stationId:String, completionHandler: @escaping (_ result: [Departure]?, _ error: String?) -> Void) {
         let urlRequest = "https://efa-api.asw.io/api/v1/station/" + stationId + "/departures"
         
-        
-        Alamofire.request(urlRequest).responseJSON { response in
+        Alamofire.request(urlRequest).validate().responseJSON { response in
             
             print("Result: \(response.result)")                         // response serialization result
-            
-            if let json = response.result.value {
-                print("JSON created") // serialized json response
-                
-                if let array = json as? [Any] {
+            switch response.result {
+            case .success:
+                if let json = response.result.value {
+                    print("JSON created") // serialized json response
                     
-                    var departureArray = [Departure]()
-                    
-                    for object in array {
+                    if let array = json as? [Any] {
                         
-                        let departure = Departure(fromDictionary: object as! [String:AnyObject])
+                        var departureArray = [Departure]()
                         
-                        guard departure != nil else {
-                            continue
+                        for object in array {
+                            
+                            let departure = Departure(fromDictionary: object as! [String:AnyObject])
+                            
+                            guard departure != nil else {
+                                continue
+                            }
+                            
+                            departureArray.append(departure!)
+                            
                         }
                         
-                        departureArray.append(departure!)
+                        completionHandler(departureArray, nil)
                         
                     }
                     
-                    completionHandler(departureArray, nil)
-                    
                 }
                 
+            case .failure(let error):
+                print(error)
+                completionHandler(nil, error.localizedDescription)
             }
         }
         

@@ -17,20 +17,13 @@ class Departure: NSObject {
     var number: String!
     
     init?(fromDictionary dictionary:[String:AnyObject]) {
-        
+                
         guard let direction = dictionary["direction"] as? String else {
             print("Direction parse")
             return nil
         }
         
         self.direction = direction
-        
-        guard let delay = dictionary["delay"] as? String else {
-            print("delay parse")
-            return nil
-        }
-        
-        self.delay = delay
         
         guard let stopName = dictionary["stopName"] as? String else {
             print("stopName parse")
@@ -44,14 +37,22 @@ class Departure: NSObject {
             return nil
         }
         
-        guard let hour = departureTime["hour"] as? String else {
+        guard var hour = departureTime["hour"] as? String else {
             print("hour")
             return nil
         }
         
-        guard let minute = departureTime["minute"] as? String else {
+        if hour.count < 2 {
+            hour = "0" + hour
+        }
+        
+        guard var minute = departureTime["minute"] as? String else {
             print("minute")
             return nil
+        }
+        
+        if minute.count < 2 {
+            minute = "0" + minute
         }
         
         self.departureTime = hour + ":" + minute
@@ -62,6 +63,14 @@ class Departure: NSObject {
         }
         
         self.number = number
+        
+        guard let delay = dictionary["delay"] as? String else {
+            print("delay parse")
+            self.delay = "0"
+            return
+        }
+        
+        self.delay = delay
         
     }
     

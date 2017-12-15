@@ -16,12 +16,12 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
     var station: Station?
     
     var departureArray = [Departure]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         stationNameLabel.text = station?.fullName
-    
+        
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
@@ -34,13 +34,14 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         VVSClient.sharedInstance.getDeparturesForStation(stationId: (station?.stationId)!, completionHandler: ({result, error in
             
-            self.departureArray = result
-            self.departureTableView.reloadData()
-            
+            if error == nil {
+                self.departureArray = result!
+                self.departureTableView.reloadData()
+            }
         }))
         
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -50,7 +51,7 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:DepartureTableViewCell = self.departureTableView.dequeueReusableCell(withIdentifier: "departureTableCell") as! DepartureTableViewCell!
         
-       
+        
         let departure = departureArray[indexPath.row]
         
         cell.departureLabel.text = departure.departureTime
@@ -61,9 +62,9 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
         
     }
-
-
-
+    
+    
+    
     @IBAction func backButtonClicked(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
