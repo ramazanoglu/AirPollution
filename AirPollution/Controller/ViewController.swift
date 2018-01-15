@@ -178,8 +178,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
-    
 }
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -197,8 +195,6 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        print("Selected Item \(AirDataAnnotation.airDataTypes[row])")
-        
         for annotation in mapView.annotations {
             
             mapView.removeAnnotation(annotation)
@@ -212,12 +208,9 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             self.mapView.addAnnotation(annotation)
         }
         
-        
-        
         UIView.animate(withDuration: 0.5, animations: ({
             
             self.legendView.backgroundColor = UIColor.white;
-            
             
             self.legendView.frame = CGRect(x: 0.0, y: self.view.frame.size.height, width: self.view.frame.size.width, height:200.0)
             
@@ -237,7 +230,7 @@ extension ViewController:  MKMapViewDelegate {
             let userLocationView = mapView.view(for: annotation);
             userLocationView?.canShowCallout = false;
             
-            return userLocationView  //Default is to let the system handle it.
+            return userLocationView
         }
         
         if annotation.isKind(of: StationAnnotation.self) {  //Handle StationAnnotations..
@@ -281,8 +274,6 @@ extension ViewController:  MKMapViewDelegate {
             
             let stationAnnotation = annotation as! StationAnnotation
             
-            print("annotation clicked")
-            
             self.selectedStation = stationAnnotation.station
             
             performSegue(withIdentifier: "departures_segue", sender: self)
@@ -315,7 +306,7 @@ extension ViewController:  MKMapViewDelegate {
                     
                     airDataAnnotaionView.frame = CGRect(x: 0, y: 0, width: 100 * scaleFactor, height: 100 * scaleFactor)
                     airDataAnnotaionView.imageView.frame = CGRect(x: 0, y: 0, width: 100 * scaleFactor, height: 100 * scaleFactor)
-                        
+                    
                 }
                 
             }

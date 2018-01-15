@@ -117,27 +117,36 @@ extension UIColor {
         
         var endColor:UIColor
         var fraction:CGFloat
-        
+        var startColor:UIColor
+    
+    
         if value <= 20 {
             fraction = CGFloat(value / 20)
             endColor =  UIColor(red: 0, green: 121 / 255, blue: 107 / 255, alpha: 0.7)
+            startColor = UIColor.green
         } else if value <= 40 {
             fraction = CGFloat(value / 40)
             endColor = UIColor(red: 249 / 255, green: 168 / 255, blue: 37 / 255, alpha: 0.7)
+            startColor =  UIColor(red: 0, green: 121 / 255, blue: 107 / 255, alpha: 0.7)
+
         } else if value <= 60 {
             fraction = CGFloat(value / 60)
             endColor = UIColor(red: 230 / 255, green: 81 / 255, blue: 0, alpha: 0.7)
+            startColor = UIColor(red: 249 / 255, green: 168 / 255, blue: 37 / 255, alpha: 0.7)
+
         } else if value <= 100 {
             fraction = CGFloat(value / 100)
             endColor = UIColor(red: 221 / 255, green: 44 / 255, blue: 0, alpha: 0.7)
+            startColor =  UIColor(red: 230 / 255, green: 81 / 255, blue: 0, alpha: 0.7)
         } else {
             fraction = CGFloat(value / 100)
             endColor = UIColor(red: 150 / 255, green: 0, blue: 132 / 255, alpha: 0.7)
+            startColor = UIColor(red: 221 / 255, green: 44 / 255, blue: 0, alpha: 0.7)
         }
         
         let f = min(max(0, fraction), 1)
         
-        let c1 = UIColor.green.getComponents()
+        let c1 = startColor.getComponents()
         let c2 = endColor.getComponents()
         
        
