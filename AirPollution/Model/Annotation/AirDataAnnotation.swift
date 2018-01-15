@@ -53,11 +53,17 @@ class AirDataAnnotation: NSObject, MKAnnotation {
                 switch sensorData.valueType {
                     
                 case "P1":
-                    setColorAndValue(sensorData: sensorData, baseValue: 500, valueTypeIndex: valueTypeIndex)
+                    title = String(sensorData.value)
+                    subtitle = AirDataAnnotation.airDataTypes[valueTypeIndex].title
+                    
+                    color = UIColor.interpolateRGBColorTo(sensorData.value)
                     
                     return
                 case "P2":
-                    setColorAndValue(sensorData: sensorData, baseValue: 500, valueTypeIndex: valueTypeIndex)
+                    title = String(sensorData.value)
+                    subtitle = AirDataAnnotation.airDataTypes[valueTypeIndex].title
+                    
+                    color = UIColor.interpolateRGBColorTo(sensorData.value)
                     
                     return
                     
@@ -100,36 +106,60 @@ class AirDataAnnotation: NSObject, MKAnnotation {
     }
 }
 
+struct ColorComponents {
+    var r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat
+}
+
+
 extension UIColor {
     
-    func interpolateRGBColorTo(_ end: UIColor, fraction: CGFloat) -> UIColor? {
+  static  func interpolateRGBColorTo(_ value: Double) -> UIColor? {
+        
+        var endColor:UIColor
+        var fraction:CGFloat
+        
+        if value <= 20 {
+            fraction = CGFloat(value / 20)
+            endColor =  UIColor(red: 0, green: 121 / 255, blue: 107 / 255, alpha: 0.7)
+        } else if value <= 40 {
+            fraction = CGFloat(value / 40)
+            endColor = UIColor(red: 249 / 255, green: 168 / 255, blue: 37 / 255, alpha: 0.7)
+        } else if value <= 60 {
+            fraction = CGFloat(value / 60)
+            endColor = UIColor(red: 230 / 255, green: 81 / 255, blue: 0, alpha: 0.7)
+        } else if value <= 100 {
+            fraction = CGFloat(value / 100)
+            endColor = UIColor(red: 221 / 255, green: 44 / 255, blue: 0, alpha: 0.7)
+        } else {
+            fraction = CGFloat(value / 100)
+            endColor = UIColor(red: 150 / 255, green: 0, blue: 132 / 255, alpha: 0.7)
+        }
+        
         let f = min(max(0, fraction), 1)
         
-        guard let c1 = self.cgColor.components, let c2 = end.cgColor.components else { return nil }
+        let c1 = UIColor.green.getComponents()
+        let c2 = endColor.getComponents()
         
-        let r: CGFloat = CGFloat(c1[0] + (c2[0] - c1[0]) * f)
-        let g: CGFloat = CGFloat(c1[1] + (c2[1] - c1[1]) * f)
-        let b: CGFloat = CGFloat(c1[2] + (c2[2] - c1[2]) * f)
-        let a: CGFloat = CGFloat(c1[3] + (c2[3] - c1[3]) * f)
-        
+       
+        let r = c1.r + (c2.r - c1.r) * f
+        let g = c1.g + (c2.g - c1.g) * f
+        let b = c1.b + (c2.b - c1.b) * f
+        let a = c1.a + (c2.a - c1.a) * f
+    
+    
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
     
-    func getEndColorForValue(_ value: Double) -> UIColor {
-        
-        if value <= 20 {
-            return UIColor(red: 0, green: 121, blue: 107, alpha: 255)
-        } else if value <= 40 {
-            return UIColor(red: 249, green: 168, blue: 37, alpha: 255)
-        } else if value <= 60 {
-            return UIColor(red: 230, green: 81, blue: 0, alpha: 255)
-        } else if value <= 100 {
-            return UIColor(red: 221, green: 44, blue: 0, alpha: 255)
-        } else {
-            return UIColor(red: 150, green: 0, blue: 132, alpha: 255)
+    func getComponents() -> ColorComponents {
+        if (cgColor.numberOfComponents == 2) {
+            let cc = cgColor.components!
+            return ColorComponents(r:cc[0], g:cc[0], b:cc[0], a:cc[1])
+        }
+        else {
+            let cc = cgColor.components!
+            return ColorComponents(r:cc[0], g:cc[1], b:cc[2], a:cc[3])
         }
     }
 
-    
 }
 
