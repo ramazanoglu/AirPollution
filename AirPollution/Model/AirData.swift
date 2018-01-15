@@ -15,6 +15,7 @@ class AirData: NSObject {
     var latitude: Double!
     var longitude: Double!
     var sensorDataArray: [SensorData]!
+    var sensorId:Int!
     
     override init() {
         self.sensorDataArray = [SensorData]()

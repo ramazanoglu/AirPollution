@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2234A7FF1FE7D58E00730412 /* PollutionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */; };
 		223F8BE61FE2743800752BF2 /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BE51FE2743800752BF2 /* Departure.swift */; };
 		223F8BE81FE27FB400752BF2 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */; };
 		223F8BEB1FE2816800752BF2 /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BEA1FE2816800752BF2 /* StationAnnotation.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionDetailViewController.swift; sourceTree = "<group>"; };
 		223F8BE51FE2743800752BF2 /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
 		223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
 		223F8BEA1FE2816800752BF2 /* StationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationAnnotation.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				224378D01FDAC59C00F8C708 /* ViewController.swift */,
 				223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */,
+				2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -389,10 +392,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AirPollution/Pods-AirPollution-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -539,6 +544,7 @@
 				22C3B7831FDAD34200FE9919 /* AirData.swift in Sources */,
 				22B876371FE03C8200AFE4DD /* AirDataAnnotationView.swift in Sources */,
 				224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */,
+				2234A7FF1FE7D58E00730412 /* PollutionDetailViewController.swift in Sources */,
 				223F8BE61FE2743800752BF2 /* Departure.swift in Sources */,
 				22C3B77E1FDACAB200FE9919 /* AirDataClient.swift in Sources */,
 				2287403B1FE13EBF00D7B0EA /* Station.swift in Sources */,

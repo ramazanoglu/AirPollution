@@ -8,11 +8,58 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 class AirDataClient: NSObject {
     static let sharedInstance = AirDataClient()
     private override init() {}
     
+    
+    func getLastDayImage(sensorId:Int, completionHandler: @escaping (_ result: UIImage?, _ error: String?) -> Void) {
+        let url = "https://api.luftdaten.info/grafana/render/dashboard-solo/db/single-sensor-view?orgId=1&panelId=2&width=300&height=200&tz=UTC%2B02%3A00&var-node=" + String(sensorId)
+        
+        Alamofire.request(url).validate().responseImage { response in
+            
+            switch response.result {
+            case .success:
+                
+                if let image = response.result.value {
+                    print("image downloaded: \(image)")
+                    
+                    completionHandler(image, nil)
+                }
+                
+            case  .failure(let error):
+                print(error)
+                completionHandler(nil, error.localizedDescription)
+                
+            }
+        }
+        
+    }
+    
+    func getFloatingImage(sensorId:Int, completionHandler: @escaping (_ result: UIImage?, _ error: String?) -> Void) {
+        let url =  "https://api.luftdaten.info/grafana/render/dashboard-solo/db/single-sensor-view?orgId=1&panelId=1&width=300&height=200&tz=UTC%2B02%3A00&var-node=" + String(sensorId)
+    
+        Alamofire.request(url).validate().responseImage { response in
+            
+            switch response.result {
+            case .success:
+                
+                if let image = response.result.value {
+                    print("image downloaded: \(image)")
+                    
+                    completionHandler(image, nil)
+                }
+                
+            case  .failure(let error):
+                print(error)
+                completionHandler(nil, error.localizedDescription)
+                
+            }
+        }
+    
+    }
     
     func getAirData(userLatitude:Double, userLongitude:Double, completinHandler: @escaping (_ result: [AirData], _ error: String?) -> Void) {
         
@@ -51,9 +98,15 @@ class AirDataClient: NSObject {
                         guard let longitude = location["longitude"] as? NSString else  {
                             continue
                         }
-
+                        
                         airData.longitude = longitude.doubleValue
-
+                        
+                        
+                        let sensor = element["sensor"] as! [String:AnyObject]
+                        
+                        let sensorId = sensor["id"] as! Int
+                        
+                        airData.sensorId = sensorId
                         
                         
                         airData.country = country

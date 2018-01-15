@@ -29,6 +29,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var selectedStation: Station!
     
+    var selectedAirData: AirData!
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
@@ -41,7 +43,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             print("Location found \(userLocation.coordinate)")
             
             let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             
             AirDataClient.sharedInstance.getAirData(userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude) {
                 (result, error ) in
@@ -49,7 +51,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.airDataArray = result
                 
                 print("Match found \(result.count)")
-                
+                                
                 for airData in result {
                     
                     let annotation = AirDataAnnotation(airData: airData, valueTypeIndex: 0)
@@ -64,6 +66,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.mapView.setRegion(region, animated: true)
         }
     }
+    
+    
     @IBAction func switchMap(_ sender: Any) {
 
         for annotation in mapView.annotations {
@@ -167,6 +171,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if let vc = segue.destination as? DeparturesViewController {
                vc.station = self.selectedStation
             }
+        } else if segue.identifier == "pollution_detail_segue" {
+            if let vc = segue.destination as? PollutionDetailViewController {
+                vc.airData = self.selectedAirData
+            }
         }
     }
 
@@ -255,6 +263,8 @@ extension ViewController:  MKMapViewDelegate {
         view?.annotation = annotation
         
         view?.canShowCallout = true
+        view?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        view?.rightCalloutAccessoryView?.alpha = 0
         view?.rightCalloutAccessoryView = UIButton(type: .infoLight)
         
         return view
@@ -276,6 +286,30 @@ extension ViewController:  MKMapViewDelegate {
             self.selectedStation = stationAnnotation.station
             
             performSegue(withIdentifier: "departures_segue", sender: self)
+            
+        } else if annotation .isKind(of: AirDataAnnotation.self) {
+            
+            let airDataAnnotation = annotation as! AirDataAnnotation
+            
+            self.selectedAirData = airDataAnnotation.airData
+            
+            performSegue(withIdentifier: "pollution_detail_segue", sender: self)
+            
+        }
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        for annotation in mapView.annotations {
+            
+            if annotation .isKind(of: AirDataAnnotation.self) {
+                
+                let view = mapView.view(for: annotation)
+                
+                view?.transform = CGAffineTransform(scaleX: CGFloat(0.01 / mapView.region.span.latitudeDelta), y: CGFloat(0.01 / mapView.region.span.latitudeDelta))
+                
+            }
             
         }
         

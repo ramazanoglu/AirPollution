@@ -56,6 +56,7 @@
                         <outlet property="mapSwitchButton" destination="eqB-w0-YLi" id="Ni3-QR-Z5v"/>
                         <outlet property="mapView" destination="XS5-PQ-KQI" id="J7p-eE-RJb"/>
                         <segue destination="LE4-x3-tDA" kind="presentation" identifier="departures_segue" id="eHe-ee-cPR"/>
+                        <segue destination="3Mk-hB-5U4" kind="presentation" identifier="pollution_detail_segue" id="8w4-Aj-czr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -215,7 +216,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Eh-IV-KdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1102" y="122"/>
+            <point key="canvasLocation" x="1094" y="-145"/>
+        </scene>
+        <!--Pollution Detail View Controller-->
+        <scene sceneID="u4m-NJ-wlC">
+            <objects>
+                <viewController id="3Mk-hB-5U4" customClass="PollutionDetailViewController" customModule="AirPollution" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z7U-XN-3vp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2k1-Ac-tC5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NlL-hX-4Bh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PUb-CG-Zdw">
+                                        <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpO-Dn-Ux0">
+                                <rect key="frame" x="16" y="20" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="onBackPressed:" destination="3Mk-hB-5U4" eventType="touchUpInside" id="uBu-y5-N56"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BXX-GU-WGB" firstAttribute="trailing" secondItem="2k1-Ac-tC5" secondAttribute="trailing" id="2fj-AD-mOi"/>
+                            <constraint firstItem="2k1-Ac-tC5" firstAttribute="height" secondItem="Z7U-XN-3vp" secondAttribute="height" id="N32-ET-xjG"/>
+                            <constraint firstItem="OpO-Dn-Ux0" firstAttribute="leading" secondItem="BXX-GU-WGB" secondAttribute="leading" constant="16" id="QbB-np-JgE"/>
+                            <constraint firstItem="2k1-Ac-tC5" firstAttribute="top" secondItem="Z7U-XN-3vp" secondAttribute="top" id="X85-k9-fBo"/>
+                            <constraint firstItem="OpO-Dn-Ux0" firstAttribute="top" secondItem="BXX-GU-WGB" secondAttribute="top" id="ZD9-gz-HyD"/>
+                            <constraint firstItem="2k1-Ac-tC5" firstAttribute="width" secondItem="BXX-GU-WGB" secondAttribute="width" id="pgM-Ke-XMy"/>
+                            <constraint firstItem="2k1-Ac-tC5" firstAttribute="leading" secondItem="BXX-GU-WGB" secondAttribute="leading" id="ugK-Lq-9eG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BXX-GU-WGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="floatingImageView" destination="PUb-CG-Zdw" id="7fG-Nr-SeG"/>
+                        <outlet property="lastDayImageView" destination="NlL-hX-4Bh" id="r9J-5N-u0m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TFe-GM-bO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1094" y="559"/>
         </scene>
     </scenes>
 </document>

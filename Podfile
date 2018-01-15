@@ -10,6 +10,8 @@ target 'AirPollution' do
   # Pods for AirPollution
 
  pod 'Alamofire', '~> 4.5'
+ pod 'AlamofireImage', '~> 3.3'
+
 
 
   target 'AirPollutionTests' do
