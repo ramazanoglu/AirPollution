@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class AirDataAnnotationView: MKAnnotationView {
-    private var imageView: UIView!
+    var imageView: UIView!
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)

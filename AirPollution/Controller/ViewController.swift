@@ -51,7 +51,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.airDataArray = result
                 
                 print("Match found \(result.count)")
-                                
+                
                 for airData in result {
                     
                     let annotation = AirDataAnnotation(airData: airData, valueTypeIndex: 0)
@@ -69,7 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func switchMap(_ sender: Any) {
-
+        
         for annotation in mapView.annotations {
             
             mapView.removeAnnotation(annotation)
@@ -85,7 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             UIView.animate(withDuration: 0.5, animations: {
                 self.legendButton.alpha = 0
             })
-
+            
             for station in stationArray {
                 
                 let stationAnnotation = StationAnnotation()
@@ -100,9 +100,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             UIView.animate(withDuration: 0.5, animations: {
                 self.legendButton.alpha = 1
             })
-
+            
             mapSwitchButton.setTitle("Stations", for: .normal)
-
+            
             
             for airData in self.airDataArray {
                 let annotation = AirDataAnnotation(airData: airData, valueTypeIndex: self.legendView.selectedRow(inComponent: 0))
@@ -169,7 +169,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "departures_segue" {
             if let vc = segue.destination as? DeparturesViewController {
-               vc.station = self.selectedStation
+                vc.station = self.selectedStation
             }
         } else if segue.identifier == "pollution_detail_segue" {
             if let vc = segue.destination as? PollutionDetailViewController {
@@ -177,7 +177,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-
+    
     
     
 }
@@ -307,7 +307,16 @@ extension ViewController:  MKMapViewDelegate {
                 
                 let view = mapView.view(for: annotation)
                 
-                view?.transform = CGAffineTransform(scaleX: CGFloat(0.01 / mapView.region.span.latitudeDelta), y: CGFloat(0.01 / mapView.region.span.latitudeDelta))
+                if view != nil && (view? .isKind(of: AirDataAnnotationView.self))! {
+                
+                    let airDataAnnotaionView = view as! AirDataAnnotationView
+                    
+                    let scaleFactor = CGFloat(0.01 / mapView.region.span.latitudeDelta)
+                    
+                    airDataAnnotaionView.frame = CGRect(x: 0, y: 0, width: 100 * scaleFactor, height: 100 * scaleFactor)
+                    airDataAnnotaionView.imageView.frame = CGRect(x: 0, y: 0, width: 100 * scaleFactor, height: 100 * scaleFactor)
+                        
+                }
                 
             }
             
