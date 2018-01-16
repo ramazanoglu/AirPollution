@@ -322,6 +322,11 @@
 					224378CA1FDAC59C00F8C708 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					224378DE1FDAC59C00F8C708 = {
 						CreatedOnToolsVersion = 9.2;

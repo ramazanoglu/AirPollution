@@ -77,10 +77,11 @@ class AirDataClient: NSObject {
                     
                     var airDataArray = [AirData]()
                     
+                    var sensorIdSet = Set<Int>.init()
                     
                     for object in array {
                         // access all objects in array
-                        
+                                                
                         let airData = AirData()
                         
                         let element = object as! [String:AnyObject]
@@ -105,6 +106,12 @@ class AirDataClient: NSObject {
                         let sensor = element["sensor"] as! [String:AnyObject]
                         
                         let sensorId = sensor["id"] as! Int
+                        
+                        if sensorIdSet.contains(sensorId) {
+                            continue
+                        } else {
+                            sensorIdSet.insert(sensorId)
+                        }
                         
                         airData.sensorId = sensorId
                         

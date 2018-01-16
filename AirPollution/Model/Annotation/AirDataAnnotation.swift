@@ -140,7 +140,7 @@ extension UIColor {
             startColor =  UIColor(red: 230 / 255, green: 81 / 255, blue: 0, alpha: 0.7)
         } else {
             fraction = CGFloat(value / 100)
-            endColor = UIColor(red: 150 / 255, green: 0, blue: 132 / 255, alpha: 0.7)
+            endColor = UIColor(red: 140 / 255, green: 0, blue: 132 / 255, alpha: 0.7)
             startColor = UIColor(red: 221 / 255, green: 44 / 255, blue: 0, alpha: 0.7)
         }
         

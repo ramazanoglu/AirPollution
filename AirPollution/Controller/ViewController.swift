@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import UserNotifications
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
@@ -31,17 +32,38 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var selectedAirData: AirData!
     
+    let notificationIdentifier = "myNotification"
+    
+    var lastUserLocation:CLLocation!
+
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
+        print("location Update")
         
-        if(!locationUpdated) {
-            locationUpdated = true
+        let userLocation:CLLocation = locations[0]
+        
+        if lastUserLocation != nil && userLocation.coordinate.latitude == lastUserLocation.coordinate.latitude && userLocation.coordinate.longitude == lastUserLocation.coordinate.longitude {
+            print("Location is same")
+            return
+        } else {
+            lastUserLocation = userLocation
+        }
+        
+        if UIApplication.shared.applicationState == .background {
+            print("App is backgrounded. New location is %@", userLocation)
             
-            let userLocation:CLLocation = locations[0]
+            self.scheduleNotification(inSeconds: 5, completion: { success in
+                if success {
+                    print("Successfully scheduled notification")
+                } else {
+                    print("Error scheduling notification")
+                }
+            })
             
-            print("Location found \(userLocation.coordinate)")
-            
+        } else {
+            NSLog("Location lat \(userLocation.coordinate.latitude) long \(userLocation.coordinate.longitude)")
+
             let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             
@@ -65,7 +87,38 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
             self.mapView.setRegion(region, animated: true)
         }
+        
+        print("Location found \(userLocation.coordinate)")
+        
     }
+    
+    func scheduleNotification(inSeconds: TimeInterval, completion: @escaping (Bool) -> ()) {
+        
+        // Create Notification content
+        let notificationContent = UNMutableNotificationContent()
+        
+        notificationContent.title = "Check this out"
+        notificationContent.subtitle = "Location is updated"
+        notificationContent.body = "WHOA COOL"
+        
+        // Create Notification trigger
+        // Note that 60 seconds is the smallest repeating interval.
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
+        
+        // Create a notification request with the above components
+        let request = UNNotificationRequest(identifier: notificationIdentifier, content: notificationContent, trigger: trigger)
+        
+        // Add this notification to the UserNotificationCenter
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+            if error != nil {
+                print("\(error)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        })
+    }
+
     
     
     @IBAction func switchMap(_ sender: Any) {
@@ -152,7 +205,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
+            
             locationManager.startUpdatingLocation()
+            
         }
         
         VVSClient.sharedInstance.readStationLocationFile()
