@@ -40,7 +40,7 @@ class AirDataClient: NSObject {
     
     func getFloatingImage(sensorId:Int, completionHandler: @escaping (_ result: UIImage?, _ error: String?) -> Void) {
         let url =  "https://api.luftdaten.info/grafana/render/dashboard-solo/db/single-sensor-view?orgId=1&panelId=1&width=300&height=200&tz=UTC%2B02%3A00&var-node=" + String(sensorId)
-    
+        
         Alamofire.request(url).validate().responseImage { response in
             
             switch response.result {
@@ -58,7 +58,7 @@ class AirDataClient: NSObject {
                 
             }
         }
-    
+        
     }
     
     func getClosestAirData(userLatitude:Double, userLongitude:Double, completinHandler: @escaping (_ result: AirData, _ error: String?) -> Void) {
@@ -105,7 +105,7 @@ class AirDataClient: NSObject {
                         
                         let sensorId = sensor["id"] as! Int
                         
-                       
+                        
                         airData.sensorId = sensorId
                         
                         
@@ -114,6 +114,8 @@ class AirDataClient: NSObject {
                         
                         let sensorDataArray = element["sensordatavalues"] as! [AnyObject]
                         
+                        var isPollutionDataIncluded:Bool = false
+                        
                         for sensorDataElement in sensorDataArray {
                             let data = sensorDataElement as! [String: AnyObject]
                             
@@ -121,17 +123,22 @@ class AirDataClient: NSObject {
                             
                             airData.sensorDataArray.append(sensorData)
                             
+                            if sensorData.valueType == "P1" {
+                                isPollutionDataIncluded = true
+                            }
+                            
+                            
                         }
                         
-                        
                         if closestAirData != nil {
+                            
+                            if !isPollutionDataIncluded {
+                                continue
+                            }
                             
                             let distance:Double = (longitude.doubleValue - userLongitude) * (longitude.doubleValue - userLongitude) + (latitude.doubleValue - userLatitude) * (latitude.doubleValue - userLatitude)
                             
                             let closestDistance:Double =  (closestAirData.longitude - userLongitude) * (closestAirData.longitude - userLongitude) + (closestAirData.latitude - userLatitude) * (closestAirData.latitude - userLatitude)
-                            
-                            
-                            print("Distance \(distance) Closest Distance \(closestDistance) AirData \(airData.sensorId)")
                             
                             if distance < closestDistance {
                                 closestAirData = airData
@@ -141,9 +148,7 @@ class AirDataClient: NSObject {
                             closestAirData = airData
                         }
                         
-                        
                     }
-                    
                     
                     completinHandler(closestAirData, nil)
                     
@@ -175,7 +180,7 @@ class AirDataClient: NSObject {
                     
                     for object in array {
                         // access all objects in array
-                                                
+                        
                         let airData = AirData()
                         
                         let element = object as! [String:AnyObject]
@@ -224,16 +229,9 @@ class AirDataClient: NSObject {
                             
                         }
                         
-                        
-                        //                        if (airData.longitude > userLongitude - 0.01 && airData.longitude < userLongitude + 0.01) && (airData.latitude > userLatitude - 0.01 && airData.latitude < userLatitude + 0.01) {
-                        
                         airDataArray.append(airData)
                         
-                        //                        }
-                        
-                        
                     }
-                    
                     
                     completinHandler(airDataArray, nil)
                     
