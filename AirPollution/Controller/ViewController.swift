@@ -16,8 +16,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapSwitchButton: UIButton!
     @IBOutlet weak var legendButton: UIButton!
     
-    var locationUpdated: Bool = false
-    
     var locationManager = CLLocationManager()
     
     var legendView:UIPickerView!
@@ -37,7 +35,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var lastUserLocation:CLLocation!
 
     
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("location Update")
         
@@ -53,13 +50,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if UIApplication.shared.applicationState == .background {
             print("App is backgrounded. New location is %@", userLocation)
             
-            self.scheduleNotification(inSeconds: 5, completion: { success in
-                if success {
-                    print("Successfully scheduled notification")
-                } else {
-                    print("Error scheduling notification")
+            AirDataClient.sharedInstance.getClosestAirData(userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude) {
+                (result, error ) in
+                
+                guard error == nil else {
+                    return
                 }
-            })
+                
+                print("Closest Air Data ::  \(result)")
+                
+                self.scheduleNotification(inSeconds: 5, airData: result, completion: { success in
+                    if success {
+                        print("Successfully scheduled notification")
+                    } else {
+                        print("Error scheduling notification")
+                    }
+                })
+            }
             
         } else {
             NSLog("Location lat \(userLocation.coordinate.latitude) long \(userLocation.coordinate.longitude)")
@@ -69,6 +76,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
             AirDataClient.sharedInstance.getAirData(userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude) {
                 (result, error ) in
+                
+                guard error == nil else {
+                    return
+                }
                 
                 self.airDataArray = result
                 
@@ -92,14 +103,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func scheduleNotification(inSeconds: TimeInterval, completion: @escaping (Bool) -> ()) {
+    func scheduleNotification(inSeconds: TimeInterval, airData:AirData, completion: @escaping (Bool) -> ()) {
         
         // Create Notification content
         let notificationContent = UNMutableNotificationContent()
         
-        notificationContent.title = "Check this out"
-        notificationContent.subtitle = "Location is updated"
-        notificationContent.body = "WHOA COOL"
+        notificationContent.title = "Air Pollution Alert!"
+        notificationContent.subtitle = airData.sensorDataArray[0].valueType
+        notificationContent.body = String(airData.sensorDataArray[0].value)
         
         // Create Notification trigger
         // Note that 60 seconds is the smallest repeating interval.
