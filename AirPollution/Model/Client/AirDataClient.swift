@@ -136,11 +136,8 @@ class AirDataClient: NSObject {
                                 continue
                             }
                             
-                            let distance:Double = (longitude.doubleValue - userLongitude) * (longitude.doubleValue - userLongitude) + (latitude.doubleValue - userLatitude) * (latitude.doubleValue - userLatitude)
-                            
-                            let closestDistance:Double =  (closestAirData.longitude - userLongitude) * (closestAirData.longitude - userLongitude) + (closestAirData.latitude - userLatitude) * (closestAirData.latitude - userLatitude)
-                            
-                            if distance < closestDistance {
+                           
+                            if self.checkIfDistanceIsCloser(userLatitude: userLatitude, userLongitude: userLongitude, sensorLatitude: latitude.doubleValue, sensorLongitude: longitude.doubleValue, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
                                 closestAirData = airData
                             }
                             
@@ -158,6 +155,16 @@ class AirDataClient: NSObject {
             
         }
         
+    }
+    
+    func checkIfDistanceIsCloser(userLatitude:Double, userLongitude:Double, sensorLatitude:Double, sensorLongitude:Double, closestLatitude:Double, closestLongitude:Double) -> Bool {
+        
+        let distance:Double = (sensorLongitude - userLongitude) * (sensorLongitude - userLongitude) + (sensorLatitude - userLatitude) * (sensorLatitude - userLatitude)
+        
+        let closestDistance:Double =  (closestLongitude - userLongitude) * (closestLongitude - userLongitude) + (closestLatitude - userLatitude) * (closestLatitude - userLatitude)
+        
+        return distance < closestDistance
+
     }
     
     func getAirData(userLatitude:Double, userLongitude:Double, completinHandler: @escaping (_ result: [AirData], _ error: String?) -> Void) {

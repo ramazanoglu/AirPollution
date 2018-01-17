@@ -33,7 +33,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let notificationIdentifier = "myNotification"
     
     var lastUserLocation:CLLocation!
-
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("location Update")
@@ -57,9 +57,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 }
                 
-                print("Closest Air Data ::  \(result)")
+                print("Closest Air Data ::  \(result.id)")
                 
-                self.scheduleNotification(inSeconds: 5, airData: result, completion: { success in
+                self.scheduleNotification(inSeconds: 3, airData: result, completion: { success in
                     if success {
                         print("Successfully scheduled notification")
                     } else {
@@ -69,8 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             
         } else {
-            NSLog("Location lat \(userLocation.coordinate.latitude) long \(userLocation.coordinate.longitude)")
-
+            
             let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             
@@ -129,7 +128,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         })
     }
-
+    
     
     
     @IBAction func switchMap(_ sender: Any) {
@@ -365,7 +364,7 @@ extension ViewController:  MKMapViewDelegate {
                 let view = mapView.view(for: annotation)
                 
                 if view != nil && (view? .isKind(of: AirDataAnnotationView.self))! {
-                
+                    
                     let airDataAnnotaionView = view as! AirDataAnnotationView
                     
                     let scaleFactor = CGFloat(0.01 / mapView.region.span.latitudeDelta)
