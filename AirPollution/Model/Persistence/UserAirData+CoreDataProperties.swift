@@ -1,8 +1,9 @@
 //
 //  UserAirData+CoreDataProperties.swift
-//  
+//  AirPollution
 //
 //  Created by Gokturk Ramazanoglu on 18.01.18.
+//  Copyright © 2018 zigzag. All rights reserved.
 //
 //
 

@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 import UserNotifications
+import CoreData
+
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
@@ -34,6 +36,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var lastUserLocation:CLLocation!
     
+    var stack = (UIApplication.shared.delegate as! AppDelegate).stack
+
+    
+    var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>! {
+        didSet {
+            fetchedResultsController.delegate = self
+            executeSearch()
+            fetchAllUserAirDatas()
+        }
+    }
+
+    func fetchAllUserAirDatas() {
+        
+        
+        for userAirData in fetchedResultsController.fetchedObjects as! [UserAirData] {
+            print("User air data from db ::: \(userAirData)")
+        }
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("location Update")
@@ -58,6 +78,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
                 
                 print("Closest Air Data ::  \(result.id)")
+                
+               
+                let userAirData = UserAirData(airData: result, userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude, context: self.fetchedResultsController.managedObjectContext)
+                print("Added a new user air data \(userAirData)")
+                self.stack.save()
                 
                 self.scheduleNotification(inSeconds: 3, airData: result, completion: { success in
                     if success {
@@ -228,6 +253,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         
+        
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAirData")
+        fr.sortDescriptors = []
+        
+        // Create the FetchedResultsController
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
     }
     
     
@@ -378,6 +410,20 @@ extension ViewController:  MKMapViewDelegate {
             
         }
         
+    }
+    
+}
+
+extension ViewController: NSFetchedResultsControllerDelegate {
+    
+    func executeSearch() {
+        if let fc = fetchedResultsController {
+            do {
+                try fc.performFetch()
+            } catch let e as NSError {
+                print("Error while trying to perform a search: \n\(e)")
+            }
+        }
     }
     
 }
