@@ -15,7 +15,7 @@
 		223F8BEB1FE2816800752BF2 /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BEA1FE2816800752BF2 /* StationAnnotation.swift */; };
 		223F8BED1FE2939600752BF2 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */; };
 		224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378CE1FDAC59C00F8C708 /* AppDelegate.swift */; };
-		224378D11FDAC59C00F8C708 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378D01FDAC59C00F8C708 /* ViewController.swift */; };
+		224378D11FDAC59C00F8C708 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378D01FDAC59C00F8C708 /* MapViewController.swift */; };
 		224378D41FDAC59C00F8C708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224378D21FDAC59C00F8C708 /* Main.storyboard */; };
 		224378D61FDAC59C00F8C708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224378D51FDAC59C00F8C708 /* Assets.xcassets */; };
 		224378D91FDAC59C00F8C708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224378D71FDAC59C00F8C708 /* LaunchScreen.storyboard */; };
@@ -63,7 +63,7 @@
 		223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		224378CB1FDAC59C00F8C708 /* AirPollution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirPollution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		224378CE1FDAC59C00F8C708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		224378D01FDAC59C00F8C708 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		224378D01FDAC59C00F8C708 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		224378D31FDAC59C00F8C708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		224378D51FDAC59C00F8C708 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		224378D81FDAC59C00F8C708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		22C3B77C1FDACA7B00FE9919 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				224378D01FDAC59C00F8C708 /* ViewController.swift */,
+				224378D01FDAC59C00F8C708 /* MapViewController.swift */,
 				223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */,
 				2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */,
 			);
@@ -565,7 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				224378D11FDAC59C00F8C708 /* ViewController.swift in Sources */,
+				224378D11FDAC59C00F8C708 /* MapViewController.swift in Sources */,
 				22C3B7831FDAD34200FE9919 /* AirData.swift in Sources */,
 				22B876371FE03C8200AFE4DD /* AirDataAnnotationView.swift in Sources */,
 				224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */,

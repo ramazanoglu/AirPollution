@@ -13,7 +13,7 @@ import UserNotifications
 import CoreData
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapSwitchButton: UIButton!
     @IBOutlet weak var legendButton: UIButton!
@@ -277,7 +277,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
 }
 
-extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension MapViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -320,7 +320,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-extension ViewController:  MKMapViewDelegate {
+extension MapViewController:  MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation.isKind(of: MKUserLocation.self) {  //Handle user location annotation..
             
@@ -414,7 +414,7 @@ extension ViewController:  MKMapViewDelegate {
     
 }
 
-extension ViewController: NSFetchedResultsControllerDelegate {
+extension MapViewController: NSFetchedResultsControllerDelegate {
     
     func executeSearch() {
         if let fc = fetchedResultsController {
