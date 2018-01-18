@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/gokturkramazanoglu/AirPollution/AirPollution/Model/Persistence/UserAirData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/gokturkramazanoglu/AirPollution/AirPollution/Model/Persistence/UserAirData+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:AirPollution.xcodeproj">
    </FileRef>
    <FileRef

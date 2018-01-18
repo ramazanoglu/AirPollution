@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2215E6C12010B64F00AC43E9 /* UserAirData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2215E6C02010B64F00AC43E9 /* UserAirData+CoreDataProperties.swift */; };
+		2215E6C32010B65200AC43E9 /* UserAirData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2215E6C22010B65200AC43E9 /* UserAirData+CoreDataClass.swift */; };
 		2234A7FF1FE7D58E00730412 /* PollutionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */; };
 		223F8BE61FE2743800752BF2 /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BE51FE2743800752BF2 /* Departure.swift */; };
 		223F8BE81FE27FB400752BF2 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */; };
@@ -19,6 +21,8 @@
 		224378D91FDAC59C00F8C708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224378D71FDAC59C00F8C708 /* LaunchScreen.storyboard */; };
 		224378E41FDAC59C00F8C708 /* AirPollutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378E31FDAC59C00F8C708 /* AirPollutionTests.swift */; };
 		224378EF1FDAC59C00F8C708 /* AirPollutionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */; };
+		227F04AF2010A46A007D58E1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 227F04AD2010A46A007D58E1 /* Model.xcdatamodeld */; };
+		227F04B22010B34F007D58E1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F04B12010B34F007D58E1 /* CoreDataStack.swift */; };
 		228740391FE13E7100D7B0EA /* VVSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228740381FE13E7100D7B0EA /* VVSClient.swift */; };
 		2287403B1FE13EBF00D7B0EA /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287403A1FE13EBF00D7B0EA /* Station.swift */; };
 		228740411FE1641900D7B0EA /* station_location_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 228740401FE1641900D7B0EA /* station_location_data.txt */; };
@@ -50,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2215E6C02010B64F00AC43E9 /* UserAirData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserAirData+CoreDataProperties.swift"; path = "/Users/gokturkramazanoglu/AirPollution/AirPollution/Model/Persistence/UserAirData+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		2215E6C22010B65200AC43E9 /* UserAirData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserAirData+CoreDataClass.swift"; path = "/Users/gokturkramazanoglu/AirPollution/AirPollution/Model/Persistence/UserAirData+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionDetailViewController.swift; sourceTree = "<group>"; };
 		223F8BE51FE2743800752BF2 /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
 		223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +74,8 @@
 		224378EA1FDAC59C00F8C708 /* AirPollutionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirPollutionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPollutionUITests.swift; sourceTree = "<group>"; };
 		224378F01FDAC59C00F8C708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		227F04AE2010A46A007D58E1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		227F04B12010B34F007D58E1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		228740381FE13E7100D7B0EA /* VVSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VVSClient.swift; sourceTree = "<group>"; };
 		2287403A1FE13EBF00D7B0EA /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		228740401FE1641900D7B0EA /* station_location_data.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = station_location_data.txt; sourceTree = "<group>"; };
@@ -180,6 +188,17 @@
 			path = AirPollutionUITests;
 			sourceTree = "<group>";
 		};
+		227F04B02010B30B007D58E1 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				2215E6C22010B65200AC43E9 /* UserAirData+CoreDataClass.swift */,
+				2215E6C02010B64F00AC43E9 /* UserAirData+CoreDataProperties.swift */,
+				227F04AD2010A46A007D58E1 /* Model.xcdatamodeld */,
+				227F04B12010B34F007D58E1 /* CoreDataStack.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		22C3B77A1FDACA7000FE9919 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +211,7 @@
 		22C3B77B1FDACA7500FE9919 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				227F04B02010B30B007D58E1 /* Persistence */,
 				223F8BE91FE2812B00752BF2 /* Annotation */,
 				22C3B77F1FDAD29900FE9919 /* Client */,
 				22C3B7801FDAD2EE00FE9919 /* SensorData.swift */,
@@ -550,11 +570,15 @@
 				22B876371FE03C8200AFE4DD /* AirDataAnnotationView.swift in Sources */,
 				224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */,
 				2234A7FF1FE7D58E00730412 /* PollutionDetailViewController.swift in Sources */,
+				2215E6C12010B64F00AC43E9 /* UserAirData+CoreDataProperties.swift in Sources */,
 				223F8BE61FE2743800752BF2 /* Departure.swift in Sources */,
 				22C3B77E1FDACAB200FE9919 /* AirDataClient.swift in Sources */,
+				227F04B22010B34F007D58E1 /* CoreDataStack.swift in Sources */,
 				2287403B1FE13EBF00D7B0EA /* Station.swift in Sources */,
 				223F8BEB1FE2816800752BF2 /* StationAnnotation.swift in Sources */,
 				22B876351FE03C4E00AFE4DD /* AirDataAnnotation.swift in Sources */,
+				227F04AF2010A46A007D58E1 /* Model.xcdatamodeld in Sources */,
+				2215E6C32010B65200AC43E9 /* UserAirData+CoreDataClass.swift in Sources */,
 				228740391FE13E7100D7B0EA /* VVSClient.swift in Sources */,
 				22C3B7811FDAD2EE00FE9919 /* SensorData.swift in Sources */,
 				223F8BED1FE2939600752BF2 /* DepartureTableViewCell.swift in Sources */,
@@ -856,6 +880,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		227F04AD2010A46A007D58E1 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				227F04AE2010A46A007D58E1 /* Model.xcdatamodel */,
+			);
+			currentVersion = 227F04AE2010A46A007D58E1 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 224378C31FDAC59C00F8C708 /* Project object */;
 }
