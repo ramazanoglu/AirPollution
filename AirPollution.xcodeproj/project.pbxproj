@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2227C8302010B82800AB5E92 /* UserAirData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227C82E2010B82800AB5E92 /* UserAirData+CoreDataClass.swift */; };
 		2227C8312010B82800AB5E92 /* UserAirData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227C82F2010B82800AB5E92 /* UserAirData+CoreDataProperties.swift */; };
+		2227C8332010E1BC00AB5E92 /* MapViewController+UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227C8322010E1BC00AB5E92 /* MapViewController+UIPickerView.swift */; };
+		2227C8352010E22800AB5E92 /* MapViewController+MapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227C8342010E22800AB5E92 /* MapViewController+MapKit.swift */; };
 		2234A7FF1FE7D58E00730412 /* PollutionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */; };
 		223F8BE61FE2743800752BF2 /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BE51FE2743800752BF2 /* Departure.swift */; };
 		223F8BE81FE27FB400752BF2 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		2227C82E2010B82800AB5E92 /* UserAirData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAirData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2227C82F2010B82800AB5E92 /* UserAirData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAirData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2227C8322010E1BC00AB5E92 /* MapViewController+UIPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+UIPickerView.swift"; sourceTree = "<group>"; };
+		2227C8342010E22800AB5E92 /* MapViewController+MapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapKit.swift"; sourceTree = "<group>"; };
 		2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionDetailViewController.swift; sourceTree = "<group>"; };
 		223F8BE51FE2743800752BF2 /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
 		223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				224378D01FDAC59C00F8C708 /* MapViewController.swift */,
 				223F8BE71FE27FB400752BF2 /* DeparturesViewController.swift */,
 				2234A7FE1FE7D58E00730412 /* PollutionDetailViewController.swift */,
+				2227C8322010E1BC00AB5E92 /* MapViewController+UIPickerView.swift */,
+				2227C8342010E22800AB5E92 /* MapViewController+MapKit.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -568,6 +574,8 @@
 				224378D11FDAC59C00F8C708 /* MapViewController.swift in Sources */,
 				22C3B7831FDAD34200FE9919 /* AirData.swift in Sources */,
 				22B876371FE03C8200AFE4DD /* AirDataAnnotationView.swift in Sources */,
+				2227C8352010E22800AB5E92 /* MapViewController+MapKit.swift in Sources */,
+				2227C8332010E1BC00AB5E92 /* MapViewController+UIPickerView.swift in Sources */,
 				224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */,
 				2234A7FF1FE7D58E00730412 /* PollutionDetailViewController.swift in Sources */,
 				223F8BE61FE2743800752BF2 /* Departure.swift in Sources */,
