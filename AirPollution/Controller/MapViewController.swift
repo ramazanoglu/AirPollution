@@ -84,6 +84,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 print("Added a new user air data \(userAirData)")
                 self.stack.save()
                 
+                // TODO: - create notification when pollution level is changed
+                
                 self.scheduleNotification(inSeconds: 3, airData: result, completion: { success in
                     if success {
                         print("Successfully scheduled notification")
@@ -108,6 +110,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 self.airDataArray = result
                 
                 print("Match found \(result.count)")
+                
+                // TODO: - find closest sensor and save into db
                 
                 for airData in result {
                     

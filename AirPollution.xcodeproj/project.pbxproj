@@ -24,6 +24,7 @@
 		224378E41FDAC59C00F8C708 /* AirPollutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378E31FDAC59C00F8C708 /* AirPollutionTests.swift */; };
 		224378EF1FDAC59C00F8C708 /* AirPollutionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */; };
 		22532E3120122C5A00E12228 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22532E3020122C5A00E12228 /* HistoryViewController.swift */; };
+		22532E3320124C4400E12228 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22532E3220124C4400E12228 /* HistoryTableViewCell.swift */; };
 		227F04AF2010A46A007D58E1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 227F04AD2010A46A007D58E1 /* Model.xcdatamodeld */; };
 		227F04B22010B34F007D58E1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F04B12010B34F007D58E1 /* CoreDataStack.swift */; };
 		228740391FE13E7100D7B0EA /* VVSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228740381FE13E7100D7B0EA /* VVSClient.swift */; };
@@ -80,6 +81,7 @@
 		224378EE1FDAC59C00F8C708 /* AirPollutionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPollutionUITests.swift; sourceTree = "<group>"; };
 		224378F01FDAC59C00F8C708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22532E3020122C5A00E12228 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		22532E3220124C4400E12228 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		227F04AE2010A46A007D58E1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		227F04B12010B34F007D58E1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		228740381FE13E7100D7B0EA /* VVSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VVSClient.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				22B876361FE03C8200AFE4DD /* AirDataAnnotationView.swift */,
 				223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */,
+				22532E3220124C4400E12228 /* HistoryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */,
 				2234A7FF1FE7D58E00730412 /* PollutionDetailViewController.swift in Sources */,
 				223F8BE61FE2743800752BF2 /* Departure.swift in Sources */,
+				22532E3320124C4400E12228 /* HistoryTableViewCell.swift in Sources */,
 				22C3B77E1FDACAB200FE9919 /* AirDataClient.swift in Sources */,
 				2227C8312010B82800AB5E92 /* UserAirData+CoreDataProperties.swift in Sources */,
 				227F04B22010B34F007D58E1 /* CoreDataStack.swift in Sources */,
