@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Joe-eG-yLO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,41 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--History View Controller-->
+        <scene sceneID="Jq8-lh-Zl6">
+            <objects>
+                <viewController id="SWk-C8-r7b" customClass="HistoryViewController" customModule="AirPollution" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XDt-4k-7Cz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="07g-VU-b0u"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="FJr-ey-Q0c"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mb7-oh-fvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118" y="1433"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="CpV-1b-fjt">
+            <objects>
+                <tabBarController id="Joe-eG-yLO" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="j9j-QT-lAg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Y1W-cy-MUJ"/>
+                        <segue destination="SWk-C8-r7b" kind="relationship" relationship="viewControllers" id="Vb3-SG-qkL"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j0t-Vf-zo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1918" y="222"/>
+        </scene>
+        <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="AirPollution" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,17 +53,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XS5-PQ-KQI">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIj-3w-BVm">
-                                <rect key="frame" x="308" y="617" width="51" height="30"/>
+                                <rect key="frame" x="308" y="568" width="51" height="30"/>
                                 <state key="normal" title="Legend"/>
                                 <connections>
                                     <action selector="showLegend:" destination="BYZ-38-t0r" eventType="touchUpInside" id="frk-67-gra"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqB-w0-YLi">
-                                <rect key="frame" x="16" y="617" width="57" height="30"/>
+                                <rect key="frame" x="16" y="568" width="57" height="30"/>
                                 <state key="normal" title="Stations"/>
                                 <connections>
                                     <action selector="switchMap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZlL-XW-ipu"/>
@@ -51,6 +85,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="XV8-iN-HCm"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="legendButton" destination="GIj-3w-BVm" id="WOk-cf-LT4"/>
                         <outlet property="mapSwitchButton" destination="eqB-w0-YLi" id="Ni3-QR-Z5v"/>
