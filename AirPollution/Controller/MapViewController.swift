@@ -37,7 +37,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var lastUserLocation:CLLocation!
     
     var stack = (UIApplication.shared.delegate as! AppDelegate).stack
-
+    
     
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>! {
         didSet {
@@ -46,7 +46,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             fetchAllUserAirDatas()
         }
     }
-
+    
     func fetchAllUserAirDatas() {
         
         
@@ -79,7 +79,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 
                 print("Closest Air Data ::  \(result.id)")
                 
-               
+                
                 let userAirData = UserAirData(airData: result, userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude, context: self.fetchedResultsController.managedObjectContext)
                 print("Added a new user air data \(userAirData)")
                 self.stack.save()
@@ -112,14 +112,41 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 print("Match found \(result.count)")
                 
                 // TODO: - find closest sensor and save into db
+                var closestAirData:AirData!
                 
                 for airData in result {
                     
                     let annotation = AirDataAnnotation(airData: airData, valueTypeIndex: 0)
                     
                     
+                    if closestAirData != nil {
+                        
+                        var isPollutionDataIncluded:Bool = false
+                        
+                        for sensorDataElement in airData.sensorDataArray {
+                            
+                            if sensorDataElement.valueType == "P1" {
+                                isPollutionDataIncluded = true
+                            }
+                            
+                        }
+                       
+                        if isPollutionDataIncluded && AirDataClient.checkIfDistanceIsCloser(userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude, sensorLatitude: airData.latitude, sensorLongitude: airData.longitude, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
+                            closestAirData = airData
+                        }
+                        
+                    } else {
+                        closestAirData = airData
+                    }
+                    
                     self.mapView.addAnnotation(annotation)
                     
+                }
+                
+                if closestAirData != nil {
+                    let userAirData = UserAirData(airData: closestAirData, userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude, context: self.fetchedResultsController.managedObjectContext)
+                    print("Added a new user air data from foreground \(userAirData)")
+                    self.stack.save()
                 }
                 
             }

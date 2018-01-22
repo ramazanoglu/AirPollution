@@ -137,7 +137,7 @@ class AirDataClient: NSObject {
                             }
                             
                            
-                            if self.checkIfDistanceIsCloser(userLatitude: userLatitude, userLongitude: userLongitude, sensorLatitude: latitude.doubleValue, sensorLongitude: longitude.doubleValue, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
+                            if AirDataClient.checkIfDistanceIsCloser(userLatitude: userLatitude, userLongitude: userLongitude, sensorLatitude: latitude.doubleValue, sensorLongitude: longitude.doubleValue, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
                                 closestAirData = airData
                             }
                             
@@ -157,7 +157,7 @@ class AirDataClient: NSObject {
         
     }
     
-    func checkIfDistanceIsCloser(userLatitude:Double, userLongitude:Double, sensorLatitude:Double, sensorLongitude:Double, closestLatitude:Double, closestLongitude:Double) -> Bool {
+    static func checkIfDistanceIsCloser(userLatitude:Double, userLongitude:Double, sensorLatitude:Double, sensorLongitude:Double, closestLatitude:Double, closestLongitude:Double) -> Bool {
         
         let distance:Double = (sensorLongitude - userLongitude) * (sensorLongitude - userLongitude) + (sensorLatitude - userLatitude) * (sensorLatitude - userLatitude)
         

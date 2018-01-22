@@ -17,6 +17,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var bubbleChartView: BubbleChartView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>! {
         didSet {
@@ -77,6 +78,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let endDate = Date()
         
         print("date starts ::  \(startDate) ends :: \(endDate)")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd,yyyy"
+
+        
+        dateLabel.text = String(describing: dateFormatter.string(from: endDate))
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAirData")
         fr.sortDescriptors = []
