@@ -18,8 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8S-Q1-lmk">
+                                <rect key="frame" x="91.5" y="20" width="30" height="30"/>
+                                <state key="normal" title="&lt;"/>
+                                <connections>
+                                    <action selector="previousDateClicked:" destination="SWk-C8-r7b" eventType="touchUpInside" id="FXp-BK-rji"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXq-ba-wBV">
+                                <rect key="frame" x="253.5" y="20" width="30" height="30"/>
+                                <state key="normal" title="&gt;"/>
+                                <connections>
+                                    <action selector="nextDateClicked:" destination="SWk-C8-r7b" eventType="touchUpInside" id="X5e-nJ-isU"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djS-Dw-je6">
-                                <rect key="frame" x="16" y="20" width="343" height="21"/>
+                                <rect key="frame" x="137.5" y="20" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="BwV-Ag-jzQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -86,19 +103,27 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="s8S-Q1-lmk" firstAttribute="top" secondItem="07g-VU-b0u" secondAttribute="top" id="9hZ-24-NVq"/>
                             <constraint firstItem="9NN-tf-xTL" firstAttribute="top" secondItem="djS-Dw-je6" secondAttribute="bottom" id="CsM-wl-9WA"/>
                             <constraint firstItem="9NN-tf-xTL" firstAttribute="leading" secondItem="07g-VU-b0u" secondAttribute="leading" id="Eg1-eP-9RX"/>
-                            <constraint firstItem="djS-Dw-je6" firstAttribute="leading" secondItem="07g-VU-b0u" secondAttribute="leading" constant="16" id="VN1-q9-KrV"/>
+                            <constraint firstItem="eXq-ba-wBV" firstAttribute="top" secondItem="07g-VU-b0u" secondAttribute="top" id="Tjz-4A-i1t"/>
+                            <constraint firstItem="djS-Dw-je6" firstAttribute="leading" secondItem="s8S-Q1-lmk" secondAttribute="trailing" constant="16" id="WO8-x8-zjh"/>
                             <constraint firstItem="djS-Dw-je6" firstAttribute="top" secondItem="07g-VU-b0u" secondAttribute="top" id="Z0t-5X-jYw"/>
                             <constraint firstItem="9NN-tf-xTL" firstAttribute="trailing" secondItem="07g-VU-b0u" secondAttribute="trailing" id="bDO-r7-Q9q"/>
-                            <constraint firstItem="07g-VU-b0u" firstAttribute="trailing" secondItem="djS-Dw-je6" secondAttribute="trailing" constant="16" id="cLs-bB-BnM"/>
+                            <constraint firstItem="djS-Dw-je6" firstAttribute="centerX" secondItem="07g-VU-b0u" secondAttribute="centerX" id="cwU-Ay-27u"/>
                             <constraint firstItem="Jsq-Us-5jd" firstAttribute="leading" secondItem="07g-VU-b0u" secondAttribute="leading" id="gMy-5l-nhm"/>
                             <constraint firstItem="07g-VU-b0u" firstAttribute="trailing" secondItem="Jsq-Us-5jd" secondAttribute="trailing" id="kL2-fe-clC"/>
                             <constraint firstItem="07g-VU-b0u" firstAttribute="bottom" secondItem="Jsq-Us-5jd" secondAttribute="bottom" id="l74-Lk-1oi"/>
+                            <constraint firstItem="djS-Dw-je6" firstAttribute="trailing" secondItem="eXq-ba-wBV" secondAttribute="leading" constant="-16" id="rab-1H-1rz"/>
                             <constraint firstItem="Jsq-Us-5jd" firstAttribute="top" secondItem="9NN-tf-xTL" secondAttribute="bottom" id="z9i-kR-ylX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="07g-VU-b0u"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="weS-Qj-n8m" appends="YES" id="m6T-a2-btU"/>
+                            <outletCollection property="gestureRecognizers" destination="npG-MJ-Ff5" appends="YES" id="KQi-yq-nu6"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="history" id="FJr-ey-Q0c"/>
                     <connections>
@@ -108,6 +133,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mb7-oh-fvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="weS-Qj-n8m">
+                    <connections>
+                        <action selector="handleLeftSwipe:" destination="SWk-C8-r7b" id="La3-vO-jFw"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="npG-MJ-Ff5">
+                    <connections>
+                        <action selector="handleRightSwipe:" destination="SWk-C8-r7b" id="T50-4W-msf"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="1432.5337331334333"/>
         </scene>

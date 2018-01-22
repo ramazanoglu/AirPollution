@@ -19,11 +19,54 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var bubbleChartView: BubbleChartView!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var currentDateIndex:Int = 0
+    
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>! {
         didSet {
             fetchedResultsController.delegate = self
             executeSearch()
         }
+    }
+    
+    @IBAction func nextDateClicked(_ sender: Any) {
+        print("nextDateClicked")
+        
+       handleNextDateRequest()
+        
+    }
+    
+    @IBAction func previousDateClicked(_ sender: Any) {
+        print("previousDateClicked")
+        
+        handlePreviousDateRequest()
+    }
+    
+    @IBAction func handleRightSwipe(_ sender: UISwipeGestureRecognizer) {
+        print("Right Swipe previous day")
+        
+        handlePreviousDateRequest()
+    }
+    
+    @IBAction func handleLeftSwipe(_ sender: UISwipeGestureRecognizer) {
+        
+        print("Left Swipe next day")
+        
+        handleNextDateRequest()
+    }
+    
+    func handleNextDateRequest() {
+        if currentDateIndex != 0 {
+            currentDateIndex = currentDateIndex + 1
+        }
+        
+        print("Current Date Index \(currentDateIndex)")
+    }
+    
+    func handlePreviousDateRequest() {
+        currentDateIndex = currentDateIndex - 1
+        
+        print("Current Date Index \(currentDateIndex)")
+
     }
     
     var userAirDataArray:[UserAirData]!
