@@ -177,7 +177,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // Add this notification to the UserNotificationCenter
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
             if error != nil {
-                print("\(error)")
+                print("\(String(describing: error))")
                 completion(false)
             } else {
                 completion(true)

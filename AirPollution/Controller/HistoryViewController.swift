@@ -102,6 +102,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         bubbleChartView.leftAxis.spaceTop = 0.3
         bubbleChartView.leftAxis.spaceBottom = 0.3
         bubbleChartView.leftAxis.axisMinimum = 0
+        
+        let limitline = ChartLimitLine(limit: 50, label: "Pollution threshold")
+        
+        bubbleChartView.leftAxis.addLimitLine(limitline)
 //        bubbleChartView.leftAxis.axisMaximum = 200
         
         bubbleChartView.rightAxis.enabled = false
@@ -109,6 +113,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         bubbleChartView.xAxis.axisMinimum = -20
         bubbleChartView.xAxis.axisMaximum = 20
         bubbleChartView.xAxis.drawLabelsEnabled = false
+        
         
     
         
@@ -130,7 +135,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
         
-        print("date starts ::  \(startDate) ends :: \(endDate)")
+        print("date starts ::  \(String(describing: startDate)) ends :: \(String(describing: endDate))")
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd,yyyy"
@@ -181,7 +186,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         
-        let averageSize = max(min(12, average), 6)
+        let averageSize = max(min(10, average), 6)
 
         
         let yVals1 : [ChartDataEntry] = [BubbleChartDataEntry(x: 0, y: maximum, size: CGFloat(3))]
