@@ -19,7 +19,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var bubbleChartView: BubbleChartView!
     @IBOutlet weak var dateLabel: UILabel!
     
-    var currentDateIndex:Int = 0
+    var selectedDateIndex:Int = 0
     
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>! {
         didSet {
@@ -55,17 +55,21 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func handleNextDateRequest() {
-        if currentDateIndex != 0 {
-            currentDateIndex = currentDateIndex + 1
+        if selectedDateIndex != 0 {
+            selectedDateIndex = selectedDateIndex + 1
+            
+            fillChartAndTableWithSelectedDate()
         }
         
-        print("Current Date Index \(currentDateIndex)")
+        print("Current Date Index \(selectedDateIndex)")
     }
     
     func handlePreviousDateRequest() {
-        currentDateIndex = currentDateIndex - 1
+        selectedDateIndex = selectedDateIndex - 1
         
-        print("Current Date Index \(currentDateIndex)")
+        print("Current Date Index \(selectedDateIndex)")
+        
+        fillChartAndTableWithSelectedDate()
 
     }
     
@@ -111,35 +115,43 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         historyTableView.delegate = self
         historyTableView.dataSource = self
         
-        
+        fillChartAndTableWithSelectedDate()
+       
+    }
+    
+    func fillChartAndTableWithSelectedDate() {
         let cal = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
-
-        var startDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())
+        
+        var startDate = Calendar.current.date(byAdding: .day, value: selectedDateIndex, to: Date())
         
         startDate = cal.startOfDay(for: startDate!)
         
-        let endDate = Date()
+        
+        
+        let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
         
         print("date starts ::  \(startDate) ends :: \(endDate)")
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd,yyyy"
-
         
-        dateLabel.text = String(describing: dateFormatter.string(from: endDate))
+        
+        dateLabel.text = String(describing: dateFormatter.string(from: startDate!))
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAirData")
         fr.sortDescriptors = []
         
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
-        fr.predicate = NSPredicate(format: "timestamp > %@ AND timestamp < %@", startDate! as NSDate, endDate as NSDate)
+        fr.predicate = NSPredicate(format: "timestamp > %@ AND timestamp < %@", startDate! as NSDate, endDate! as NSDate)
         
         
         do {
             let fetchedResults = try stack.context.fetch(fr) as! [UserAirData]
-
+            
             self.userAirDataArray = fetchedResults
+            
+            self.historyTableView.reloadData()
             
             print(fetchedResults.count)
             
@@ -151,17 +163,20 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             //Set chart data
             setDataCount(minimum: minElement, maximum: maxElement, average: average, count: fetchedResults.count)
-
-
+            
+            
         } catch {
             print("catch fetch error")
         }
-        
     }
 
     func setDataCount(minimum:Double!, maximum:Double!, average:Double, count:Int) {
         
         guard maximum != nil && minimum != nil &&  count > 0 else {
+            
+            bubbleChartView.data = nil
+            bubbleChartView.clear()
+            
             return
         }
         
