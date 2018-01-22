@@ -9,12 +9,14 @@
 import UIKit
 import CoreData
 import CoreLocation
+import Charts
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var stack = (UIApplication.shared.delegate as! AppDelegate).stack
     
     @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet weak var bubbleChartView: BubbleChartView!
     
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>! {
         didSet {
@@ -30,10 +32,41 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        // Initialize chart
+        bubbleChartView.noDataText = "No data found for selected date"
 
+        bubbleChartView.chartDescription?.enabled = false
+        
+        bubbleChartView.dragEnabled = false
+        bubbleChartView.setScaleEnabled(false)
+        bubbleChartView.maxVisibleCount = 200
+        bubbleChartView.pinchZoomEnabled = false
+        
+        bubbleChartView.legend.horizontalAlignment = .center
+        bubbleChartView.legend.verticalAlignment = .bottom
+        bubbleChartView.legend.orientation = .horizontal
+        bubbleChartView.legend.drawInside = false
+        bubbleChartView.legend.font = UIFont(name: "HelveticaNeue-Light", size: 10)!
+        
+        bubbleChartView.leftAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 10)!
+        bubbleChartView.leftAxis.spaceTop = 0.3
+        bubbleChartView.leftAxis.spaceBottom = 0.3
+        bubbleChartView.leftAxis.axisMinimum = 0
+//        bubbleChartView.leftAxis.axisMaximum = 200
+        
+        bubbleChartView.rightAxis.enabled = false
+        
+        bubbleChartView.xAxis.axisMinimum = -20
+        bubbleChartView.xAxis.axisMaximum = 20
+        bubbleChartView.xAxis.drawLabelsEnabled = false
+        
+    
         
         historyTableView.delegate = self
         historyTableView.dataSource = self
+        
         
         let cal = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
 
@@ -65,7 +98,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let average = fetchedResults.map{$0.p10Value}.reduce(0, +) / Double(fetchedResults.count)
             
-            print("Max \(maxElement) and min \(minElement) average :: \(average)")
+            
+            //Set chart data
+            setDataCount(minimum: minElement, maximum: maxElement, average: average, count: fetchedResults.count)
 
 
         } catch {
@@ -74,6 +109,53 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
 
+    func setDataCount(minimum:Double!, maximum:Double!, average:Double, count:Int) {
+        
+        guard maximum != nil && minimum != nil &&  count > 0 else {
+            return
+        }
+        
+        
+        let averageSize = max(min(12, average), 6)
+
+        
+        let yVals1 : [ChartDataEntry] = [BubbleChartDataEntry(x: 0, y: maximum, size: CGFloat(3))]
+        
+        let yVals2 : [ChartDataEntry] = [BubbleChartDataEntry(x: 0, y: average, size: CGFloat(averageSize))]
+        
+        let yVals3 : [ChartDataEntry] = [BubbleChartDataEntry(x: 0, y: minimum, size: CGFloat(3))]
+        
+        
+        
+        let set1 = BubbleChartDataSet(values: yVals1, label: "MAX")
+        set1.drawIconsEnabled = false
+        set1.setColor(UIColor.interpolateRGBColorTo(maximum)!, alpha: 0.5)
+        set1.drawValuesEnabled = true
+        set1.normalizeSizeEnabled = false
+        
+        let set2 = BubbleChartDataSet(values: yVals2, label: "Average")
+        set2.drawIconsEnabled = false
+        set2.setColor(UIColor.interpolateRGBColorTo(average)!, alpha: 0.5)
+        set2.drawValuesEnabled = true
+        set2.normalizeSizeEnabled = false
+        set2.highlightEnabled = true
+        
+        let set3 = BubbleChartDataSet(values: yVals3, label: "MIN")
+        set3.setColor(UIColor.interpolateRGBColorTo(minimum)!, alpha: 0.5)
+        set3.drawValuesEnabled = true
+        set3.normalizeSizeEnabled = false
+
+        
+        let data = BubbleChartData(dataSets: [set1, set2, set3])
+        data.setDrawValues(false)
+        data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 7)!)
+        data.setHighlightCircleWidth(1.5)
+        data.setValueTextColor(.white)
+        
+        bubbleChartView.data = data
+        
+        bubbleChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,7 +181,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // initially set the format based on your datepicker date
         formatter.dateFormat = "HH:mm:ss"
         
-        cell.timeLabel.text = formatter.string(from: userAirDataArray[indexPath.row].timestamp as! Date)
+        cell.timeLabel.text = formatter.string(from: userAirDataArray[indexPath.row].timestamp! as Date)
         cell.pollutionLabel.text = String(userAirDataArray[indexPath.row].p10Value)
       
         
