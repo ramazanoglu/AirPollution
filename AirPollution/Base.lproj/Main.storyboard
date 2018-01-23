@@ -172,6 +172,15 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XS5-PQ-KQI">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhT-nw-D97">
+                                <rect key="frame" x="16" y="28" width="343" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="nrg-yx-UIl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIj-3w-BVm">
                                 <rect key="frame" x="308" y="568" width="51" height="30"/>
                                 <state key="normal" title="Legend"/>
@@ -193,9 +202,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GIj-3w-BVm" secondAttribute="bottom" constant="20" id="HN4-13-FdX"/>
                             <constraint firstItem="XS5-PQ-KQI" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="LIg-gf-e8K"/>
                             <constraint firstItem="XS5-PQ-KQI" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="RXS-s4-Dfm"/>
+                            <constraint firstItem="yhT-nw-D97" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="URv-yY-KKr"/>
                             <constraint firstItem="XS5-PQ-KQI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ulp-cW-H8s"/>
+                            <constraint firstItem="yhT-nw-D97" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="dIN-1e-uen"/>
                             <constraint firstItem="XS5-PQ-KQI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m7N-UG-XxR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XS5-PQ-KQI" secondAttribute="trailing" id="oyx-wl-kCe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yhT-nw-D97" secondAttribute="trailing" constant="16" id="pli-Ot-Zs3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GIj-3w-BVm" secondAttribute="trailing" constant="16" id="vmu-LD-maS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XS5-PQ-KQI" secondAttribute="bottom" id="xGe-nQ-wsk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eqB-w0-YLi" secondAttribute="bottom" constant="20" id="yum-9I-iBN"/>
@@ -205,6 +217,7 @@
                     <tabBarItem key="tabBarItem" title="Map" id="XV8-iN-HCm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="airPollutionAlarmLabel" destination="yhT-nw-D97" id="jGt-Or-XXi"/>
                         <outlet property="legendButton" destination="GIj-3w-BVm" id="WOk-cf-LT4"/>
                         <outlet property="mapSwitchButton" destination="eqB-w0-YLi" id="Ni3-QR-Z5v"/>
                         <outlet property="mapView" destination="XS5-PQ-KQI" id="J7p-eE-RJb"/>

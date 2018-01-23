@@ -29,28 +29,18 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func nextDateClicked(_ sender: Any) {
-        print("nextDateClicked")
-        
         handleNextDateRequest()
-        
     }
     
     @IBAction func previousDateClicked(_ sender: Any) {
-        print("previousDateClicked")
-        
         handlePreviousDateRequest()
     }
     
     @IBAction func handleRightSwipe(_ sender: UISwipeGestureRecognizer) {
-        print("Right Swipe previous day")
-        
         handlePreviousDateRequest()
     }
     
     @IBAction func handleLeftSwipe(_ sender: UISwipeGestureRecognizer) {
-        
-        print("Left Swipe next day")
-        
         handleNextDateRequest()
     }
     
@@ -60,14 +50,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             fillChartAndTableWithSelectedDate()
         }
-        
-        print("Current Date Index \(selectedDateIndex)")
     }
     
     func handlePreviousDateRequest() {
         selectedDateIndex = selectedDateIndex - 1
-        
-        print("Current Date Index \(selectedDateIndex)")
         
         fillChartAndTableWithSelectedDate()
         
@@ -114,8 +100,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         bubbleChartView.xAxis.axisMinimum = -20
         bubbleChartView.xAxis.axisMaximum = 20
         bubbleChartView.xAxis.drawLabelsEnabled = false
-        
-        
         
         
         historyTableView.delegate = self
@@ -239,7 +223,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         if userAirDataArray[indexPath.row].address == "" {
-            print("address is empty")
             geocode(latitude: userAirDataArray[indexPath.row].userLatitude, longitude: userAirDataArray[indexPath.row].userLongitude) { placemark, error in
                 guard let placemark = placemark, error == nil else { return }
                 DispatchQueue.main.async {
@@ -252,8 +235,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         } else {
-            
-            print("address is saved")
             
             cell.addressLabel.text = userAirDataArray[indexPath.row].address
         }

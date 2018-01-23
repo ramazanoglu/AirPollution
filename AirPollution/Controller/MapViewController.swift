@@ -17,6 +17,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapSwitchButton: UIButton!
     @IBOutlet weak var legendButton: UIButton!
+    @IBOutlet weak var airPollutionAlarmLabel: UILabel!
     
     var locationManager = CLLocationManager()
     
@@ -276,6 +277,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        airPollutionAlarmLabel.layer.cornerRadius = 8
+        airPollutionAlarmLabel.clipsToBounds = true
+        
+        
         mapView.showsUserLocation = true
         mapView.delegate = self
         
@@ -309,9 +314,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         
         AirDataClient.sharedInstance.getFeinstaubAlarm() {(result, error) in
+
+            guard error == nil else {
+                return
+            }
+            
+            guard let result = result else {
+                return
+            }
             
             
-            print("FeinstaubAlarm \(result)")
+            if result {
+                
+                self.airPollutionAlarmLabel.text = "Air Pollution Alert"
+                self.airPollutionAlarmLabel.backgroundColor = UIColor.red
+                
+                
+            } else {
+                self.airPollutionAlarmLabel.text = "Currently No Air Pollution Alert"
+                self.airPollutionAlarmLabel.backgroundColor = UIColor.green
+                
+            }
+            
+            
+            print("Feinstaub result \(result)")
             
         }
         
