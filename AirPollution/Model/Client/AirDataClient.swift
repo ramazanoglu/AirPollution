@@ -61,95 +61,104 @@ class AirDataClient: NSObject {
         
     }
     
-    func getClosestAirData(userLatitude:Double, userLongitude:Double, completinHandler: @escaping (_ result: AirData, _ error: String?) -> Void) {
+    func getClosestAirData(userLatitude:Double, userLongitude:Double, completionHandler: @escaping (_ result: AirData?, _ error: String?) -> Void) {
         
         let urlRequest = "https://api.luftdaten.info/v1/filter/area=" + String(userLatitude) + "," + String(userLongitude) + ",1"
         
-        Alamofire.request(urlRequest).responseJSON { response in
+        Alamofire.request(urlRequest).validate().responseJSON { response in
             
             print("Result: \(response.result)")                         // response serialization result
             
-            if let json = response.result.value {
-                print("JSON created") // serialized json response
+            switch response.result {
+            case .success:
                 
-                
-                if let array = json as? [Any] {
+                if let json = response.result.value {
+                    print("JSON created") // serialized json response
                     
-                    var closestAirData:AirData!
                     
-                    for object in array {
-                        // access all objects in array
+                    if let array = json as? [Any] {
                         
-                        let airData = AirData()
+                        var closestAirData:AirData!
                         
-                        let element = object as! [String:AnyObject]
-                        
-                        let id = element["id"] as! Int
-                        
-                        airData.id = id
-                        
-                        let location = element["location"] as! [String:AnyObject]
-                        
-                        let country = location["country"] as! String
-                        let latitude = location["latitude"] as! NSString
-                        
-                        
-                        guard let longitude = location["longitude"] as? NSString else  {
-                            continue
-                        }
-                        
-                        airData.longitude = longitude.doubleValue
-                        
-                        
-                        let sensor = element["sensor"] as! [String:AnyObject]
-                        
-                        let sensorId = sensor["id"] as! Int
-                        
-                        
-                        airData.sensorId = sensorId
-                        
-                        
-                        airData.country = country
-                        airData.latitude = latitude.doubleValue
-                        
-                        let sensorDataArray = element["sensordatavalues"] as! [AnyObject]
-                        
-                        var isPollutionDataIncluded:Bool = false
-                        
-                        for sensorDataElement in sensorDataArray {
-                            let data = sensorDataElement as! [String: AnyObject]
+                        for object in array {
+                            // access all objects in array
                             
-                            let sensorData = SensorData(fromDictionary: data)
+                            let airData = AirData()
                             
-                            airData.sensorDataArray.append(sensorData)
+                            let element = object as! [String:AnyObject]
                             
-                            if sensorData.valueType == "P1" {
-                                isPollutionDataIncluded = true
-                            }
+                            let id = element["id"] as! Int
+                            
+                            airData.id = id
+                            
+                            let location = element["location"] as! [String:AnyObject]
+                            
+                            let country = location["country"] as! String
+                            let latitude = location["latitude"] as! NSString
                             
                             
-                        }
-                        
-                        if closestAirData != nil {
-                            
-                            if !isPollutionDataIncluded {
+                            guard let longitude = location["longitude"] as? NSString else  {
                                 continue
                             }
                             
-                           
-                            if AirDataClient.checkIfDistanceIsCloser(userLatitude: userLatitude, userLongitude: userLongitude, sensorLatitude: latitude.doubleValue, sensorLongitude: longitude.doubleValue, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
+                            airData.longitude = longitude.doubleValue
+                            
+                            
+                            let sensor = element["sensor"] as! [String:AnyObject]
+                            
+                            let sensorId = sensor["id"] as! Int
+                            
+                            
+                            airData.sensorId = sensorId
+                            
+                            
+                            airData.country = country
+                            airData.latitude = latitude.doubleValue
+                            
+                            let sensorDataArray = element["sensordatavalues"] as! [AnyObject]
+                            
+                            var isPollutionDataIncluded:Bool = false
+                            
+                            for sensorDataElement in sensorDataArray {
+                                let data = sensorDataElement as! [String: AnyObject]
+                                
+                                let sensorData = SensorData(fromDictionary: data)
+                                
+                                airData.sensorDataArray.append(sensorData)
+                                
+                                if sensorData.valueType == "P1" {
+                                    isPollutionDataIncluded = true
+                                }
+                                
+                                
+                            }
+                            
+                            if closestAirData != nil {
+                                
+                                if !isPollutionDataIncluded {
+                                    continue
+                                }
+                                
+                                
+                                if AirDataClient.checkIfDistanceIsCloser(userLatitude: userLatitude, userLongitude: userLongitude, sensorLatitude: latitude.doubleValue, sensorLongitude: longitude.doubleValue, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
+                                    closestAirData = airData
+                                }
+                                
+                            } else {
                                 closestAirData = airData
                             }
                             
-                        } else {
-                            closestAirData = airData
                         }
+                        
+                        completionHandler(closestAirData, nil)
                         
                     }
                     
-                    completinHandler(closestAirData, nil)
-                    
                 }
+                
+            case  .failure(let error):
+                print(error)
+                completionHandler(nil, error.localizedDescription)
                 
             }
             
@@ -164,88 +173,96 @@ class AirDataClient: NSObject {
         let closestDistance:Double =  (closestLongitude - userLongitude) * (closestLongitude - userLongitude) + (closestLatitude - userLatitude) * (closestLatitude - userLatitude)
         
         return distance < closestDistance
-
+        
     }
     
-    func getAirData(userLatitude:Double, userLongitude:Double, completinHandler: @escaping (_ result: [AirData], _ error: String?) -> Void) {
+    func getAirData(userLatitude:Double, userLongitude:Double, completionHandler: @escaping (_ result: [AirData]?, _ error: String?) -> Void) {
         
         let urlRequest = "https://api.luftdaten.info/v1/filter/area=" + String(userLatitude) + "," + String(userLongitude) + ",5"
         
-        Alamofire.request(urlRequest).responseJSON { response in
+        Alamofire.request(urlRequest).validate().responseJSON { response in
             
             print("Result: \(response.result)")                         // response serialization result
             
-            if let json = response.result.value {
-                print("JSON created") // serialized json response
+            switch response.result {
+            case .success:
                 
-                
-                if let array = json as? [Any] {
+                if let json = response.result.value {
+                    print("JSON created") // serialized json response
                     
-                    var airDataArray = [AirData]()
                     
-                    var sensorIdSet = Set<Int>.init()
-                    
-                    for object in array {
-                        // access all objects in array
+                    if let array = json as? [Any] {
                         
-                        let airData = AirData()
+                        var airDataArray = [AirData]()
                         
-                        let element = object as! [String:AnyObject]
+                        var sensorIdSet = Set<Int>.init()
                         
-                        let id = element["id"] as! Int
-                        
-                        airData.id = id
-                        
-                        let location = element["location"] as! [String:AnyObject]
-                        
-                        let country = location["country"] as! String
-                        let latitude = location["latitude"] as! NSString
-                        
-                        
-                        guard let longitude = location["longitude"] as? NSString else  {
-                            continue
+                        for object in array {
+                            // access all objects in array
+                            
+                            let airData = AirData()
+                            
+                            let element = object as! [String:AnyObject]
+                            
+                            let id = element["id"] as! Int
+                            
+                            airData.id = id
+                            
+                            let location = element["location"] as! [String:AnyObject]
+                            
+                            let country = location["country"] as! String
+                            let latitude = location["latitude"] as! NSString
+                            
+                            
+                            guard let longitude = location["longitude"] as? NSString else  {
+                                continue
+                            }
+                            
+                            airData.longitude = longitude.doubleValue
+                            
+                            
+                            let sensor = element["sensor"] as! [String:AnyObject]
+                            
+                            let sensorId = sensor["id"] as! Int
+                            
+                            if sensorIdSet.contains(sensorId) {
+                                continue
+                            } else {
+                                sensorIdSet.insert(sensorId)
+                            }
+                            
+                            airData.sensorId = sensorId
+                            
+                            
+                            airData.country = country
+                            airData.latitude = latitude.doubleValue
+                            
+                            let sensorDataArray = element["sensordatavalues"] as! [AnyObject]
+                            
+                            for sensorDataElement in sensorDataArray {
+                                let data = sensorDataElement as! [String: AnyObject]
+                                
+                                let sensorData = SensorData(fromDictionary: data)
+                                
+                                airData.sensorDataArray.append(sensorData)
+                                
+                            }
+                            
+                            airDataArray.append(airData)
+                            
                         }
                         
-                        airData.longitude = longitude.doubleValue
-                        
-                        
-                        let sensor = element["sensor"] as! [String:AnyObject]
-                        
-                        let sensorId = sensor["id"] as! Int
-                        
-                        if sensorIdSet.contains(sensorId) {
-                            continue
-                        } else {
-                            sensorIdSet.insert(sensorId)
-                        }
-                        
-                        airData.sensorId = sensorId
-                        
-                        
-                        airData.country = country
-                        airData.latitude = latitude.doubleValue
-                        
-                        let sensorDataArray = element["sensordatavalues"] as! [AnyObject]
-                        
-                        for sensorDataElement in sensorDataArray {
-                            let data = sensorDataElement as! [String: AnyObject]
-                            
-                            let sensorData = SensorData(fromDictionary: data)
-                            
-                            airData.sensorDataArray.append(sensorData)
-                            
-                        }
-                        
-                        airDataArray.append(airData)
+                        completionHandler(airDataArray, nil)
                         
                     }
                     
-                    completinHandler(airDataArray, nil)
-                    
                 }
                 
+            case  .failure(let error):
+                print(error)
+                completionHandler(nil, error.localizedDescription)
+                
             }
-            
         }
         
     }

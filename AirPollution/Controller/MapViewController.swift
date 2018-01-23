@@ -68,7 +68,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             let elapsedTime = Date().timeIntervalSince(lastUpdateTime)
             
             // If last location update was more than half an hour ago, reload the data
-            if Int(elapsedTime) > 2 * 60 {
+            if Int(elapsedTime) > 30 * 60 {
                 isLastUpdateExpired = true
                 lastUpdateTime = Date()
             } else {
@@ -99,6 +99,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 }
                 
+                guard let result = result else {
+                    return
+                }
+                
                 print("Closest Air Data ::  \(result.id)")
                 
                 
@@ -126,6 +130,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 (result, error ) in
                 
                 guard error == nil else {
+                    return
+                }
+                
+                guard let result = result else {
                     return
                 }
                 
