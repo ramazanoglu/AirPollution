@@ -24,8 +24,6 @@ class AirDataClient: NSObject {
             case .success:
                 
                 if let image = response.result.value {
-                    print("image downloaded: \(image)")
-                    
                     completionHandler(image, nil)
                 }
                 
@@ -47,8 +45,6 @@ class AirDataClient: NSObject {
             case .success:
                 
                 if let image = response.result.value {
-                    print("image downloaded: \(image)")
-                    
                     completionHandler(image, nil)
                 }
                 
@@ -174,6 +170,35 @@ class AirDataClient: NSObject {
         
         return distance < closestDistance
         
+    }
+    
+    
+    func getFeinstaubAlarm(completionHandler: @escaping (_ result: Bool?, _ error: String?) -> Void) {
+        
+        let urlRequest = "http://istheutefeinstaubalarm.rocks/api/alarm"
+        
+        Alamofire.request(urlRequest).validate().responseJSON { response in
+            
+            print("Result: \(response.result)")                         // response serialization result
+            
+            switch response.result {
+            case .success:
+                if let json = response.result.value {
+                    
+                    if let object = json as? [String:AnyObject] {
+                        
+                        
+                        let feinstaubAlarm = object["feinstaubalarm"] as! Bool
+                        
+                        completionHandler(feinstaubAlarm, nil)
+                        
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                completionHandler(nil, error.localizedDescription)
+            }
+        }
     }
     
     func getAirData(userLatitude:Double, userLongitude:Double, completionHandler: @escaping (_ result: [AirData]?, _ error: String?) -> Void) {

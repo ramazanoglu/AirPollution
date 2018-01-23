@@ -45,15 +45,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         didSet {
             fetchedResultsController.delegate = self
             executeSearch()
-            fetchAllUserAirDatas()
-        }
-    }
-    
-    func fetchAllUserAirDatas() {
-        
-        
-        for userAirData in fetchedResultsController.fetchedObjects as! [UserAirData] {
-            print("User air data from db ::: \(userAirData)")
         }
     }
     
@@ -316,6 +307,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         
+        
+        AirDataClient.sharedInstance.getFeinstaubAlarm() {(result, error) in
+            
+            
+            print("FeinstaubAlarm \(result)")
+            
+        }
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAirData")
         fr.sortDescriptors = []
