@@ -12,7 +12,7 @@ import CoreLocation
 import Charts
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var stack = (UIApplication.shared.delegate as! AppDelegate).stack
     
     @IBOutlet weak var historyTableView: UITableView!
@@ -31,7 +31,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func nextDateClicked(_ sender: Any) {
         print("nextDateClicked")
         
-       handleNextDateRequest()
+        handleNextDateRequest()
         
     }
     
@@ -70,7 +70,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("Current Date Index \(selectedDateIndex)")
         
         fillChartAndTableWithSelectedDate()
-
+        
     }
     
     var userAirDataArray:[UserAirData]!
@@ -78,13 +78,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         
         // Initialize chart
         bubbleChartView.noDataText = "No data found for selected date"
-
+        
         bubbleChartView.chartDescription?.enabled = false
         
         bubbleChartView.dragEnabled = false
@@ -103,10 +103,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         bubbleChartView.leftAxis.spaceBottom = 0.3
         bubbleChartView.leftAxis.axisMinimum = 0
         
+        
         let limitline = ChartLimitLine(limit: 50, label: "Pollution threshold")
         
         bubbleChartView.leftAxis.addLimitLine(limitline)
-//        bubbleChartView.leftAxis.axisMaximum = 200
+        //        bubbleChartView.leftAxis.axisMaximum = 200
         
         bubbleChartView.rightAxis.enabled = false
         
@@ -115,13 +116,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         bubbleChartView.xAxis.drawLabelsEnabled = false
         
         
-    
+        
         
         historyTableView.delegate = self
         historyTableView.dataSource = self
         
         fillChartAndTableWithSelectedDate()
-       
+        
     }
     
     func fillChartAndTableWithSelectedDate() {
@@ -174,7 +175,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             print("catch fetch error")
         }
     }
-
+    
     func setDataCount(minimum:Double!, maximum:Double!, average:Double, count:Int) {
         
         guard maximum != nil && minimum != nil &&  count > 0 else {
@@ -187,7 +188,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         let averageSize = max(min(10, average), 6)
-
+        
         
         let yVals1 : [ChartDataEntry] = [BubbleChartDataEntry(x: 0, y: maximum, size: CGFloat(3))]
         
@@ -214,7 +215,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         set3.setColor(UIColor.interpolateRGBColorTo(minimum)!, alpha: 0.5)
         set3.drawValuesEnabled = true
         set3.normalizeSizeEnabled = false
-
+        
         
         let data = BubbleChartData(dataSets: [set1, set2, set3])
         data.setDrawValues(false)
@@ -237,15 +238,25 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell:HistoryTableViewCell = self.historyTableView.dequeueReusableCell(withIdentifier: "historyTableViewCell") as! HistoryTableViewCell!
         
         
-        geocode(latitude: userAirDataArray[indexPath.row].userLatitude, longitude: userAirDataArray[indexPath.row].userLongitude) { placemark, error in
-            guard let placemark = placemark, error == nil else { return }
-            DispatchQueue.main.async {
-                
-                cell.addressLabel.text = placemark.thoroughfare
-
+        if userAirDataArray[indexPath.row].address == "" {
+            print("address is empty")
+            geocode(latitude: userAirDataArray[indexPath.row].userLatitude, longitude: userAirDataArray[indexPath.row].userLongitude) { placemark, error in
+                guard let placemark = placemark, error == nil else { return }
+                DispatchQueue.main.async {
+                    
+                    cell.addressLabel.text = placemark.thoroughfare
+                    
+                    self.userAirDataArray[indexPath.row].address = placemark.thoroughfare
+                    self.stack.save()
+                    
+                }
             }
+        } else {
+            
+            print("address is saved")
+            
+            cell.addressLabel.text = userAirDataArray[indexPath.row].address
         }
-
         
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date
@@ -253,7 +264,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.timeLabel.text = formatter.string(from: userAirDataArray[indexPath.row].timestamp! as Date)
         cell.pollutionLabel.text = String(userAirDataArray[indexPath.row].p10Value)
-      
+        
         
         return cell
         
@@ -268,7 +279,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             completion(placemark, nil)
         }
     }
-
+    
 }
 
 extension HistoryViewController: NSFetchedResultsControllerDelegate {

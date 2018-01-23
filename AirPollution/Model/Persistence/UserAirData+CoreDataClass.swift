@@ -24,6 +24,7 @@ public class UserAirData: NSManagedObject {
             self.userLatitude = userLatitude
             self.userLongitude = userLongitude
             self.timestamp = NSDate()
+            self.address = ""
             
             for sensorData:SensorData in airData.sensorDataArray {
                 

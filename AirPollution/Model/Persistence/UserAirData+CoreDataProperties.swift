@@ -24,5 +24,6 @@ extension UserAirData {
     @NSManaged public var timestamp: NSDate?
     @NSManaged public var userLatitude: Double
     @NSManaged public var userLongitude: Double
+    @NSManaged public var address: String!
 
 }

@@ -38,6 +38,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     var stack = (UIApplication.shared.delegate as! AppDelegate).stack
     
+    var lastUpdateTime:Date!
+    
     
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>! {
         didSet {
@@ -60,11 +62,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         let userLocation:CLLocation = locations[0]
         
-        if lastUserLocation != nil && userLocation.coordinate.latitude == lastUserLocation.coordinate.latitude && userLocation.coordinate.longitude == lastUserLocation.coordinate.longitude {
-            print("Location is same")
+        var isLastUpdateExpired:Bool = false
+        
+        if lastUpdateTime != nil {
+            let elapsedTime = Date().timeIntervalSince(lastUpdateTime)
+            
+            // If last location update was more than half an hour ago, reload the data
+            if Int(elapsedTime) > 2 * 60 {
+                isLastUpdateExpired = true
+                lastUpdateTime = Date()
+            } else {
+                isLastUpdateExpired = false
+            }
+        } else {
+            isLastUpdateExpired = true
+            lastUpdateTime = Date()
+        }
+        
+        print("is last update expired \(isLastUpdateExpired)")
+        
+        if lastUserLocation != nil && !isLastUpdateExpired && userLocation.coordinate.latitude == lastUserLocation.coordinate.latitude && userLocation.coordinate.longitude == lastUserLocation.coordinate.longitude {
+            print("Location is same or time is not expired")
             return
         } else {
             lastUserLocation = userLocation
+            isLastUpdateExpired = false
         }
         
         if UIApplication.shared.applicationState == .background {
@@ -107,11 +129,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 }
                 
+                // Remove old annotations
+                for annotation in self.mapView.annotations {
+                    self.mapView.removeAnnotation(annotation)
+                }
+                
                 self.airDataArray = result
                 
                 print("Match found \(result.count)")
                 
-                // TODO: - find closest sensor and save into db
                 var closestAirData:AirData!
                 
                 for airData in result {
@@ -128,9 +154,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                             if sensorDataElement.valueType == "P1" {
                                 isPollutionDataIncluded = true
                             }
-                            
                         }
-                       
+                        
                         if isPollutionDataIncluded && AirDataClient.checkIfDistanceIsCloser(userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude, sensorLatitude: airData.latitude, sensorLongitude: airData.longitude, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
                             closestAirData = airData
                         }
@@ -140,7 +165,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     }
                     
                     self.mapView.addAnnotation(annotation)
-                    
                 }
                 
                 if closestAirData != nil {
