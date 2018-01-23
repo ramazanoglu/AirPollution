@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if granted {
                 print("Approval granted to send notifications")
             } else {
-                print(error)
+                print(error!)
             }
         }
         

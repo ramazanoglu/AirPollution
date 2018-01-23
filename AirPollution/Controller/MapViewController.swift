@@ -41,6 +41,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     var lastUpdateTime:Date!
     
+    var lastPollutionLevel:Int = -1
+    
     
     var fetchedResultsController : NSFetchedResultsController<NSFetchRequestResult>! {
         didSet {
@@ -102,15 +104,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 print("Added a new user air data \(userAirData)")
                 self.stack.save()
                 
-                // TODO: - create notification when pollution level is changed
+                let pollutionLevel = self.calculatePollutionLevel(value: userAirData.p10Value)
                 
-                self.scheduleNotification(inSeconds: 3, airData: result, completion: { success in
-                    if success {
-                        print("Successfully scheduled notification")
-                    } else {
-                        print("Error scheduling notification")
-                    }
-                })
+                print("Pollution Level \(pollutionLevel)")
+                
+                if pollutionLevel != self.lastPollutionLevel {
+                    
+                    self.scheduleNotification(inSeconds: 3, airData: result, pollutionLevel: pollutionLevel, completion: { success in
+                        if success {
+                            print("Successfully scheduled notification")
+                        } else {
+                            print("Error scheduling notification")
+                        }
+                    })
+                    
+                    self.lastPollutionLevel = pollutionLevel
+                    
+                }
+                
             }
             
         } else {
@@ -171,6 +182,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let userAirData = UserAirData(airData: closestAirData, userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude, context: self.fetchedResultsController.managedObjectContext)
                     print("Added a new user air data from foreground \(userAirData)")
                     self.stack.save()
+                    
+                    self.lastPollutionLevel = self.calculatePollutionLevel(value: userAirData.p10Value)
+                    
+                    print("Last Pollution Level \(self.lastPollutionLevel)")
                 }
                 
             }
@@ -182,23 +197,49 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func scheduleNotification(inSeconds: TimeInterval, airData:AirData, completion: @escaping (Bool) -> ()) {
+    func calculatePollutionLevel(value:Double) -> Int {
+        
+        var level = value / 25
+        
+        if level > 4 {
+            level = 4
+        }
+        
+        return Int(level)
+    }
+    
+    func scheduleNotification(inSeconds: TimeInterval, airData:AirData, pollutionLevel:Int, completion: @escaping (Bool) -> ()) {
         
         // Create Notification content
         let notificationContent = UNMutableNotificationContent()
         
-        notificationContent.title = "Air Pollution Alert!"
-        notificationContent.subtitle = airData.sensorDataArray[0].valueType
-        notificationContent.body = String(airData.sensorDataArray[0].value)
+        notificationContent.title = "Air Pollution Info!"
         
-        // Create Notification trigger
-        // Note that 60 seconds is the smallest repeating interval.
+        var subtitle:String!
+        
+        switch pollutionLevel {
+        case 0:
+            subtitle = "Air pollution is very low in your area"
+        case 1:
+            subtitle = "Air pollution is low in your area"
+
+        case 2:
+            subtitle = "Air pollution is medium in your area"
+
+        case 3:
+            subtitle = "Air pollution is high in your area"
+
+        default:
+            subtitle = "Air pollution is very high in your area"
+        }
+        
+        notificationContent.subtitle = subtitle
+        notificationContent.body = "PM10: " + String(airData.sensorDataArray[0].value)
+        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
         
-        // Create a notification request with the above components
         let request = UNNotificationRequest(identifier: notificationIdentifier, content: notificationContent, trigger: trigger)
         
-        // Add this notification to the UserNotificationCenter
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
             if error != nil {
                 print("\(String(describing: error))")
