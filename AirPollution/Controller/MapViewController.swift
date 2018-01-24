@@ -17,8 +17,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapSwitchButton: UIButton!
     @IBOutlet weak var legendButton: UIButton!
-    @IBOutlet weak var airPollutionAlarmLabel: UILabel!
+    @IBOutlet weak var airPollutionAlarmButton: UIButton!
     
+   
     var locationManager = CLLocationManager()
     
     var legendView:UIPickerView!
@@ -49,6 +50,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             fetchedResultsController.delegate = self
             executeSearch()
         }
+    }
+    
+    @IBAction func airPollutionAlarmButtonClicked(_ sender: Any) {
+    
+        UIApplication.shared.open(URL(string: "https://www.stuttgart.de/feinstaubalarm")!, options: [:], completionHandler: nil)
+
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -331,8 +338,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: "appEntersForeground", name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil )
         
-        airPollutionAlarmLabel.layer.cornerRadius = 8
-        airPollutionAlarmLabel.clipsToBounds = true
+        airPollutionAlarmButton.layer.cornerRadius = 8
+        airPollutionAlarmButton.clipsToBounds = true
         
         
         mapView.showsUserLocation = true
@@ -379,15 +386,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
             
             if result {
-                
-                self.airPollutionAlarmLabel.text = "Air Pollution Alert"
-                self.airPollutionAlarmLabel.backgroundColor = UIColor.red
-                
-                
+                self.airPollutionAlarmButton.setTitle("Air Pollution Alert", for: .normal)
+                self.airPollutionAlarmButton.backgroundColor = UIColor.red
             } else {
-                self.airPollutionAlarmLabel.text = "Currently No Air Pollution Alert"
-                self.airPollutionAlarmLabel.backgroundColor = UIColor.green
-                
+                self.airPollutionAlarmButton.setTitle("Currently No Air Pollution Alert", for: .normal)
+                self.airPollutionAlarmButton.backgroundColor = UIColor.green
             }
             
             
