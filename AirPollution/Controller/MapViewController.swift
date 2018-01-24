@@ -379,7 +379,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.mapSwitchButton.isEnabled = false
         self.legendButton.isEnabled = false
         
-        NotificationCenter.default.addObserver(self, selector: "appEntersForeground", name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil )
+        NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.appEntersForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil )
         
         airPollutionAlarmButton.layer.cornerRadius = 8
         airPollutionAlarmButton.clipsToBounds = true

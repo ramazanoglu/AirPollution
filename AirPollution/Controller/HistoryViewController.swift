@@ -65,7 +65,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: "appEntersForeground", name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil )
+        NotificationCenter.default.addObserver(self, selector: #selector(HistoryViewController.appEntersForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil )
         
         // Do any additional setup after loading the view.
         
