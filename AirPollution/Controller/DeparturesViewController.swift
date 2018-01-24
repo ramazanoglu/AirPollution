@@ -42,10 +42,12 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
             self.activityIndicator.hideActivityIndicator()
             
             guard error == nil else {
+                self.showAlertDialog(message: error!)
                 return
             }
             
             guard let result = result else {
+                self.showAlertDialog(message: "Couldn't load data")
                 return
             }
             
@@ -55,6 +57,16 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
+    func showAlertDialog(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

@@ -20,7 +20,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var airPollutionAlarmButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-   
+    
     var locationManager = CLLocationManager()
     
     var legendView:UIPickerView!
@@ -54,9 +54,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func airPollutionAlarmButtonClicked(_ sender: Any) {
-    
+        
         UIApplication.shared.open(URL(string: "https://www.stuttgart.de/feinstaubalarm")!, options: [:], completionHandler: nil)
-
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -152,11 +152,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             (result, error ) in
             
             guard error == nil else {
+                self.showAlertDialog(message: error!)
+                
                 self.activityIndicator.hideActivityIndicator()
                 return
             }
             
             guard let result = result else {
+                
+                self.showAlertDialog(message: "Couldn't load data")
                 self.activityIndicator.hideActivityIndicator()
                 return
             }
@@ -209,12 +213,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 print("Last Pollution Level \(self.lastPollutionLevel)")
             }
             
+            self.activityIndicator.hideActivityIndicator()
+            self.legendButton.isEnabled = true
+            
         }
         
         self.mapView.setRegion(region, animated: true)
         
-        self.activityIndicator.hideActivityIndicator()
-       
+        
     }
     
     func calculatePollutionLevel(value:Double) -> Int {
@@ -338,11 +344,40 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         if lastUserLocation != nil {
             getAirdataAndCreateAnnotations(latitude: lastUserLocation.coordinate.latitude, longitude: lastUserLocation.coordinate.longitude)
         }
+        
+        if stationArray == nil {
+            getStations()
+        }
+    }
+    
+    func getStations() {
+        VVSClient.sharedInstance.readStationLocationFile()
+        
+        VVSClient.sharedInstance.getStations() {(result, error) in
+            
+            guard error == nil else {
+                self.showAlertDialog(message: error!)
+                return
+            }
+            
+            guard let result = result  else {
+                self.showAlertDialog(message: "Couldn't load data")
+                return
+            }
+            
+            self.mapSwitchButton.isEnabled = true
+            
+            self.stationArray = result
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.mapSwitchButton.isEnabled = false
+        self.legendButton.isEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: "appEntersForeground", name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil )
         
@@ -373,22 +408,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         
-        VVSClient.sharedInstance.readStationLocationFile()
-        
-        VVSClient.sharedInstance.getStations() {(result, error) in
-            
-            self.stationArray = result
-            
-        }
+        getStations()
         
         
         AirDataClient.sharedInstance.getFeinstaubAlarm() {(result, error) in
             
             guard error == nil else {
+                self.showAlertDialog(message: error!)
                 return
             }
             
             guard let result = result else {
+                self.showAlertDialog(message: "Couldn't load data")
+                
                 return
             }
             
@@ -425,6 +457,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 vc.airData = self.selectedAirData
             }
         }
+    }
+    
+    
+    func showAlertDialog(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
 }

@@ -29,7 +29,19 @@ class AirDataClient: NSObject {
                 
             case  .failure(let error):
                 print(error)
-                completionHandler(nil, error.localizedDescription)
+                if let error = error as NSError? {
+                    if (error.code == CFNetworkErrors.cfurlErrorTimedOut.rawValue || error.code == CFNetworkErrors.cfurlErrorNotConnectedToInternet.rawValue || error.code == CFNetworkErrors.cfurlErrorNetworkConnectionLost.rawValue) {
+                        completionHandler(nil, "Please check your internet connection")
+                    } else {
+                        completionHandler(nil, error.localizedDescription)
+                    }
+                    
+                    return
+                } else {
+                    
+                    completionHandler(nil, error.localizedDescription)
+                    return
+                }
                 
             }
         }
@@ -50,7 +62,19 @@ class AirDataClient: NSObject {
                 
             case  .failure(let error):
                 print(error)
-                completionHandler(nil, error.localizedDescription)
+                if let error = error as NSError? {
+                    if (error.code == CFNetworkErrors.cfurlErrorTimedOut.rawValue || error.code == CFNetworkErrors.cfurlErrorNotConnectedToInternet.rawValue || error.code == CFNetworkErrors.cfurlErrorNetworkConnectionLost.rawValue) {
+                        completionHandler(nil, "Please check your internet connection")
+                    } else {
+                        completionHandler(nil, error.localizedDescription)
+                    }
+                    
+                    return
+                } else {
+                    
+                    completionHandler(nil, error.localizedDescription)
+                    return
+                }
                 
             }
         }
@@ -154,7 +178,19 @@ class AirDataClient: NSObject {
                 
             case  .failure(let error):
                 print(error)
-                completionHandler(nil, error.localizedDescription)
+                if let error = error as NSError? {
+                    if (error.code == CFNetworkErrors.cfurlErrorTimedOut.rawValue || error.code == CFNetworkErrors.cfurlErrorNotConnectedToInternet.rawValue || error.code == CFNetworkErrors.cfurlErrorNetworkConnectionLost.rawValue) {
+                        completionHandler(nil, "Please check your internet connection")
+                    } else {
+                        completionHandler(nil, error.localizedDescription)
+                    }
+                    
+                    return
+                } else {
+                    
+                    completionHandler(nil, error.localizedDescription)
+                    return
+                }
                 
             }
             
@@ -196,7 +232,19 @@ class AirDataClient: NSObject {
                 }
             case .failure(let error):
                 print(error)
-                completionHandler(nil, error.localizedDescription)
+                if let error = error as NSError? {
+                    if (error.code == CFNetworkErrors.cfurlErrorTimedOut.rawValue || error.code == CFNetworkErrors.cfurlErrorNotConnectedToInternet.rawValue || error.code == CFNetworkErrors.cfurlErrorNetworkConnectionLost.rawValue) {
+                        completionHandler(nil, "Please check your internet connection")
+                    } else {
+                        completionHandler(nil, error.localizedDescription)
+                    }
+                    
+                    return
+                } else {
+                    
+                    completionHandler(nil, error.localizedDescription)
+                    return
+                }
             }
         }
     }
@@ -285,12 +333,23 @@ class AirDataClient: NSObject {
                 
             case  .failure(let error):
                 print(error)
-                completionHandler(nil, error.localizedDescription)
+                if let error = error as NSError? {
+                    if (error.code == CFNetworkErrors.cfurlErrorTimedOut.rawValue || error.code == CFNetworkErrors.cfurlErrorNotConnectedToInternet.rawValue || error.code == CFNetworkErrors.cfurlErrorNetworkConnectionLost.rawValue) {
+                        completionHandler(nil, "Please check your internet connection")
+                    } else {
+                        completionHandler(nil, error.localizedDescription)
+                    }
+                    
+                    return
+                } else {
+                    
+                    completionHandler(nil, error.localizedDescription)
+                    return
+                }
                 
             }
         }
         
     }
-    
     
 }
