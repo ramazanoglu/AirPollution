@@ -126,75 +126,80 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
         } else {
             
-            let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            getAirdataAndCreateAnnotations(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
             
-            AirDataClient.sharedInstance.getAirData(userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude) {
-                (result, error ) in
-                
-                guard error == nil else {
-                    return
-                }
-                
-                guard let result = result else {
-                    return
-                }
-                
-                // Remove old annotations
-                for annotation in self.mapView.annotations {
-                    self.mapView.removeAnnotation(annotation)
-                }
-                
-                self.airDataArray = result
-                
-                print("Match found \(result.count)")
-                
-                var closestAirData:AirData!
-                
-                for airData in result {
-                    
-                    let annotation = AirDataAnnotation(airData: airData, valueTypeIndex: 0)
-                    
-                    
-                    if closestAirData != nil {
-                        
-                        var isPollutionDataIncluded:Bool = false
-                        
-                        for sensorDataElement in airData.sensorDataArray {
-                            
-                            if sensorDataElement.valueType == "P1" {
-                                isPollutionDataIncluded = true
-                            }
-                        }
-                        
-                        if isPollutionDataIncluded && AirDataClient.checkIfDistanceIsCloser(userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude, sensorLatitude: airData.latitude, sensorLongitude: airData.longitude, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
-                            closestAirData = airData
-                        }
-                        
-                    } else {
-                        closestAirData = airData
-                    }
-                    
-                    self.mapView.addAnnotation(annotation)
-                }
-                
-                if closestAirData != nil {
-                    let userAirData = UserAirData(airData: closestAirData, userLatitude: userLocation.coordinate.latitude, userLongitude: userLocation.coordinate.longitude, context: self.fetchedResultsController.managedObjectContext)
-                    print("Added a new user air data from foreground \(userAirData)")
-                    self.stack.save()
-                    
-                    self.lastPollutionLevel = self.calculatePollutionLevel(value: userAirData.p10Value)
-                    
-                    print("Last Pollution Level \(self.lastPollutionLevel)")
-                }
-                
-            }
-            
-            self.mapView.setRegion(region, animated: true)
         }
         
         print("Location found \(userLocation.coordinate)")
         
+    }
+    
+    func getAirdataAndCreateAnnotations(latitude: Double, longitude: Double) {
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        AirDataClient.sharedInstance.getAirData(userLatitude: latitude, userLongitude: longitude) {
+            (result, error ) in
+            
+            guard error == nil else {
+                return
+            }
+            
+            guard let result = result else {
+                return
+            }
+            
+            // Remove old annotations
+            for annotation in self.mapView.annotations {
+                self.mapView.removeAnnotation(annotation)
+            }
+            
+            self.airDataArray = result
+            
+            print("Match found \(result.count)")
+            
+            var closestAirData:AirData!
+            
+            for airData in result {
+                
+                let annotation = AirDataAnnotation(airData: airData, valueTypeIndex: 0)
+                
+                
+                if closestAirData != nil {
+                    
+                    var isPollutionDataIncluded:Bool = false
+                    
+                    for sensorDataElement in airData.sensorDataArray {
+                        
+                        if sensorDataElement.valueType == "P1" {
+                            isPollutionDataIncluded = true
+                        }
+                    }
+                    
+                    if isPollutionDataIncluded && AirDataClient.checkIfDistanceIsCloser(userLatitude: latitude, userLongitude: longitude, sensorLatitude: airData.latitude, sensorLongitude: airData.longitude, closestLatitude: closestAirData.latitude, closestLongitude: closestAirData.longitude) {
+                        closestAirData = airData
+                    }
+                    
+                } else {
+                    closestAirData = airData
+                }
+                
+                self.mapView.addAnnotation(annotation)
+            }
+            
+            if closestAirData != nil {
+                let userAirData = UserAirData(airData: closestAirData, userLatitude: latitude, userLongitude: longitude, context: self.fetchedResultsController.managedObjectContext)
+                print("Added a new user air data from foreground \(userAirData)")
+                self.stack.save()
+                
+                self.lastPollutionLevel = self.calculatePollutionLevel(value: userAirData.p10Value)
+                
+                print("Last Pollution Level \(self.lastPollutionLevel)")
+            }
+            
+        }
+        
+        self.mapView.setRegion(region, animated: true)
     }
     
     func calculatePollutionLevel(value:Double) -> Int {
@@ -222,13 +227,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             subtitle = "Air pollution is very low in your area"
         case 1:
             subtitle = "Air pollution is low in your area"
-
+            
         case 2:
             subtitle = "Air pollution is medium in your area"
-
+            
         case 3:
             subtitle = "Air pollution is high in your area"
-
+            
         default:
             subtitle = "Air pollution is very high in your area"
         }
@@ -314,9 +319,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    @objc func appEntersForeground() {
+        if lastUserLocation != nil {
+            getAirdataAndCreateAnnotations(latitude: lastUserLocation.coordinate.latitude, longitude: lastUserLocation.coordinate.longitude)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NotificationCenter.default.addObserver(self, selector: "appEntersForeground", name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil )
         
         airPollutionAlarmLabel.layer.cornerRadius = 8
         airPollutionAlarmLabel.clipsToBounds = true
@@ -355,7 +368,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         
         AirDataClient.sharedInstance.getFeinstaubAlarm() {(result, error) in
-
+            
             guard error == nil else {
                 return
             }

@@ -61,9 +61,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var userAirDataArray:[UserAirData]!
     
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: "appEntersForeground", name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil )
         
         // Do any additional setup after loading the view.
         
@@ -107,6 +109,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         fillChartAndTableWithSelectedDate()
         
+    }
+    
+    @objc func appEntersForeground() {
+        fillChartAndTableWithSelectedDate()
     }
     
     func fillChartAndTableWithSelectedDate() {
