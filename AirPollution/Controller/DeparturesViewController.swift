@@ -13,6 +13,9 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var departureTableView: UITableView!
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var departureTimeLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     var station: Station?
     
     var departureArray = [Departure]()
@@ -32,12 +35,22 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
         departureTableView.delegate = self
         departureTableView.dataSource = self
         
+        activityIndicator.showActivityIndicator()
+        
         VVSClient.sharedInstance.getDeparturesForStation(stationId: (station?.stationId)!, completionHandler: ({result, error in
             
-            if error == nil {
-                self.departureArray = result!
-                self.departureTableView.reloadData()
+            self.activityIndicator.hideActivityIndicator()
+            
+            guard error == nil else {
+                return
             }
+            
+            guard let result = result else {
+                return
+            }
+            
+            self.departureArray = result
+            self.departureTableView.reloadData()
         }))
         
     }

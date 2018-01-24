@@ -200,13 +200,18 @@
                                     <action selector="switchMap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZlL-XW-ipu"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qNh-JE-quQ">
+                                <rect key="frame" x="177.5" y="309" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Uh7-L6-tmB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7NA-q0-uq2"/>
                             <constraint firstItem="eqB-w0-YLi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Aja-hd-4IK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="qNh-JE-quQ" secondAttribute="centerX" id="CYh-uN-W6v"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GIj-3w-BVm" secondAttribute="bottom" constant="20" id="HN4-13-FdX"/>
                             <constraint firstItem="XS5-PQ-KQI" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="LIg-gf-e8K"/>
+                            <constraint firstItem="qNh-JE-quQ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ROp-Cw-lgU"/>
                             <constraint firstItem="XS5-PQ-KQI" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="RXS-s4-Dfm"/>
                             <constraint firstItem="XS5-PQ-KQI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ulp-cW-H8s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uh7-L6-tmB" secondAttribute="trailing" constant="16" id="aWh-py-isL"/>
@@ -222,6 +227,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-selected" selectedImage="icon_mapview-selected" id="XV8-iN-HCm"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="qNh-JE-quQ" id="uXk-XK-Ef0"/>
                         <outlet property="airPollutionAlarmButton" destination="Uh7-L6-tmB" id="YAo-Ye-qFc"/>
                         <outlet property="legendButton" destination="GIj-3w-BVm" id="WOk-cf-LT4"/>
                         <outlet property="mapSwitchButton" destination="eqB-w0-YLi" id="Ni3-QR-Z5v"/>
@@ -354,6 +360,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jeT-gp-K4m">
+                                <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -368,8 +377,10 @@
                             <constraint firstItem="Pb8-Fd-bkC" firstAttribute="top" secondItem="cDU-0s-jLm" secondAttribute="bottom" constant="8" id="Tz9-mf-6U5"/>
                             <constraint firstItem="4SO-Jq-nr3" firstAttribute="width" secondItem="sEX-fO-gbU" secondAttribute="width" id="Ueg-Kf-ypx"/>
                             <constraint firstItem="cDU-0s-jLm" firstAttribute="width" secondItem="sEX-fO-gbU" secondAttribute="width" id="Y0M-5V-X6s"/>
+                            <constraint firstItem="sEX-fO-gbU" firstAttribute="centerY" secondItem="jeT-gp-K4m" secondAttribute="centerY" id="ZHE-OZ-bYn"/>
                             <constraint firstItem="Pb8-Fd-bkC" firstAttribute="width" secondItem="sEX-fO-gbU" secondAttribute="width" id="axX-5u-gHj"/>
                             <constraint firstItem="JWX-1o-eMB" firstAttribute="leading" secondItem="sEX-fO-gbU" secondAttribute="leading" constant="16" id="e6s-a6-yqs"/>
+                            <constraint firstItem="sEX-fO-gbU" firstAttribute="centerX" secondItem="jeT-gp-K4m" secondAttribute="centerX" id="eLP-Xk-OKm"/>
                             <constraint firstItem="JWX-1o-eMB" firstAttribute="top" secondItem="sEX-fO-gbU" secondAttribute="top" constant="8" id="fqc-gc-rLO"/>
                             <constraint firstItem="sEX-fO-gbU" firstAttribute="trailing" secondItem="cDU-0s-jLm" secondAttribute="trailing" id="hKB-6X-qjR"/>
                             <constraint firstItem="Pb8-Fd-bkC" firstAttribute="leading" secondItem="sEX-fO-gbU" secondAttribute="leading" id="tys-cX-YXJ"/>
@@ -380,6 +391,7 @@
                         <viewLayoutGuide key="safeArea" id="sEX-fO-gbU"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="jeT-gp-K4m" id="nzS-Mh-EDC"/>
                         <outlet property="departureTableView" destination="4SO-Jq-nr3" id="Mjs-cE-SSp"/>
                         <outlet property="departureTimeLabel" destination="Pb8-Fd-bkC" id="7xt-xX-560"/>
                         <outlet property="stationNameLabel" destination="cDU-0s-jLm" id="Mlv-Ja-N2v"/>
@@ -408,6 +420,9 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="LVX-Ni-8iI">
+                                <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpO-Dn-Ux0">
                                 <rect key="frame" x="16" y="20" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
@@ -416,19 +431,22 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BXX-GU-WGB" firstAttribute="trailing" secondItem="2k1-Ac-tC5" secondAttribute="trailing" id="2fj-AD-mOi"/>
+                            <constraint firstItem="BXX-GU-WGB" firstAttribute="centerX" secondItem="LVX-Ni-8iI" secondAttribute="centerX" id="BMc-mZ-rxT"/>
                             <constraint firstItem="2k1-Ac-tC5" firstAttribute="height" secondItem="Z7U-XN-3vp" secondAttribute="height" id="N32-ET-xjG"/>
                             <constraint firstItem="OpO-Dn-Ux0" firstAttribute="leading" secondItem="BXX-GU-WGB" secondAttribute="leading" constant="16" id="QbB-np-JgE"/>
                             <constraint firstItem="2k1-Ac-tC5" firstAttribute="top" secondItem="Z7U-XN-3vp" secondAttribute="top" id="X85-k9-fBo"/>
                             <constraint firstItem="OpO-Dn-Ux0" firstAttribute="top" secondItem="BXX-GU-WGB" secondAttribute="top" id="ZD9-gz-HyD"/>
+                            <constraint firstItem="BXX-GU-WGB" firstAttribute="centerY" secondItem="LVX-Ni-8iI" secondAttribute="centerY" id="os2-Ja-lAB"/>
                             <constraint firstItem="2k1-Ac-tC5" firstAttribute="width" secondItem="BXX-GU-WGB" secondAttribute="width" id="pgM-Ke-XMy"/>
                             <constraint firstItem="2k1-Ac-tC5" firstAttribute="leading" secondItem="BXX-GU-WGB" secondAttribute="leading" id="ugK-Lq-9eG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BXX-GU-WGB"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="LVX-Ni-8iI" id="4pe-B8-wxC"/>
                         <outlet property="floatingImageView" destination="PUb-CG-Zdw" id="7fG-Nr-SeG"/>
                         <outlet property="lastDayImageView" destination="NlL-hX-4Bh" id="r9J-5N-u0m"/>
                     </connections>

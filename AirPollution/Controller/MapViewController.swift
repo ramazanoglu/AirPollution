@@ -18,6 +18,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapSwitchButton: UIButton!
     @IBOutlet weak var legendButton: UIButton!
     @IBOutlet weak var airPollutionAlarmButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
    
     var locationManager = CLLocationManager()
@@ -142,6 +143,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func getAirdataAndCreateAnnotations(latitude: Double, longitude: Double) {
+        self.activityIndicator.showActivityIndicator()
+        
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
@@ -149,10 +152,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             (result, error ) in
             
             guard error == nil else {
+                self.activityIndicator.hideActivityIndicator()
                 return
             }
             
             guard let result = result else {
+                self.activityIndicator.hideActivityIndicator()
                 return
             }
             
@@ -207,6 +212,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         self.mapView.setRegion(region, animated: true)
+        
+        self.activityIndicator.hideActivityIndicator()
+       
     }
     
     func calculatePollutionLevel(value:Double) -> Int {

@@ -30,6 +30,7 @@
 		228740391FE13E7100D7B0EA /* VVSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228740381FE13E7100D7B0EA /* VVSClient.swift */; };
 		2287403B1FE13EBF00D7B0EA /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287403A1FE13EBF00D7B0EA /* Station.swift */; };
 		228740411FE1641900D7B0EA /* station_location_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 228740401FE1641900D7B0EA /* station_location_data.txt */; };
+		22A361C42018C56400903FE8 /* ActivityIndicatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A361C32018C56400903FE8 /* ActivityIndicatorExtension.swift */; };
 		22B876351FE03C4E00AFE4DD /* AirDataAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B876341FE03C4E00AFE4DD /* AirDataAnnotation.swift */; };
 		22B876371FE03C8200AFE4DD /* AirDataAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B876361FE03C8200AFE4DD /* AirDataAnnotationView.swift */; };
 		22C3B77E1FDACAB200FE9919 /* AirDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3B77D1FDACAB200FE9919 /* AirDataClient.swift */; };
@@ -87,6 +88,7 @@
 		228740381FE13E7100D7B0EA /* VVSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VVSClient.swift; sourceTree = "<group>"; };
 		2287403A1FE13EBF00D7B0EA /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		228740401FE1641900D7B0EA /* station_location_data.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = station_location_data.txt; sourceTree = "<group>"; };
+		22A361C32018C56400903FE8 /* ActivityIndicatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExtension.swift; sourceTree = "<group>"; };
 		22B876341FE03C4E00AFE4DD /* AirDataAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataAnnotation.swift; sourceTree = "<group>"; };
 		22B876361FE03C8200AFE4DD /* AirDataAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataAnnotationView.swift; sourceTree = "<group>"; };
 		22C3B77D1FDACAB200FE9919 /* AirDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataClient.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				22B876361FE03C8200AFE4DD /* AirDataAnnotationView.swift */,
 				223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */,
 				22532E3220124C4400E12228 /* HistoryTableViewCell.swift */,
+				22A361C32018C56400903FE8 /* ActivityIndicatorExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				2227C8352010E22800AB5E92 /* MapViewController+MapKit.swift in Sources */,
 				2227C8332010E1BC00AB5E92 /* MapViewController+UIPickerView.swift in Sources */,
 				224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */,
+				22A361C42018C56400903FE8 /* ActivityIndicatorExtension.swift in Sources */,
 				2234A7FF1FE7D58E00730412 /* PollutionDetailViewController.swift in Sources */,
 				223F8BE61FE2743800752BF2 /* Departure.swift in Sources */,
 				22532E3320124C4400E12228 /* HistoryTableViewCell.swift in Sources */,
