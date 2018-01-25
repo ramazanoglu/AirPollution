@@ -146,7 +146,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.activityIndicator.showActivityIndicator()
         
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         
         AirDataClient.sharedInstance.getAirData(userLatitude: latitude, userLongitude: longitude) {
             (result, error ) in

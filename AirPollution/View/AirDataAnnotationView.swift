@@ -15,8 +15,8 @@ class AirDataAnnotationView: MKAnnotationView {
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        self.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        self.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         self.addSubview(self.imageView)
         
         self.imageView.layer.cornerRadius = 5.0

@@ -88,10 +88,10 @@ extension MapViewController:  MKMapViewDelegate {
                     
                     let airDataAnnotaionView = view as! AirDataAnnotationView
                     
-                    let scaleFactor = CGFloat(0.01 / mapView.region.span.latitudeDelta)
+                    let scaleFactor = CGFloat(0.02 / mapView.region.span.latitudeDelta)
                     
-                    airDataAnnotaionView.frame = CGRect(x: 0, y: 0, width: 100 * scaleFactor, height: 100 * scaleFactor)
-                    airDataAnnotaionView.imageView.frame = CGRect(x: 0, y: 0, width: 100 * scaleFactor, height: 100 * scaleFactor)
+                    airDataAnnotaionView.frame = CGRect(x: 0, y: 0, width: 50 * scaleFactor, height: 50 * scaleFactor)
+                    airDataAnnotaionView.imageView.frame = CGRect(x: 0, y: 0, width: 50 * scaleFactor, height: 50 * scaleFactor)
                     
                 }
                 
