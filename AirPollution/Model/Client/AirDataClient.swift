@@ -261,7 +261,7 @@ class AirDataClient: NSObject {
             case .success:
                 
                 if let json = response.result.value {
-                    print("JSON created") // serialized json response
+                    print("Get air data JSON created") // serialized json response
                     
                     
                     if let array = json as? [Any] {
@@ -325,8 +325,13 @@ class AirDataClient: NSObject {
                             
                         }
                         
-                        completionHandler(airDataArray, nil)
-                        
+                        if airDataArray.count == 0 {
+                            completionHandler(nil, "Couldn't find any data in your area")
+                        } else {
+                            completionHandler(airDataArray, nil)
+                        }
+                    } else {
+                          completionHandler(nil, "Couldn't find any data in your area")
                     }
                     
                 }
