@@ -55,6 +55,19 @@ Alamofire : https://github.com/Alamofire/Alamofire
 
 Charts : https://github.com/danielgindi/Charts
 
+## Installation & Build & Run
+
+Project uses cocoapods for libraries.
+
+To install cocoapods:
+`$ sudo gem install cocoapods`
+
+After cocoapods is installed navigate the project folder and run
+
+`pod install`
+
+To test the app in simulator, set simulator location to Stuttgart, Germany (e.g. 48.7738079,9.1731966) and update the location inside of the city to collect data for history.
+
 
 
 
