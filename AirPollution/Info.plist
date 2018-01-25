@@ -12,8 +12,8 @@
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
-                <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
 			</dict>
 		</dict>
 	</dict>
@@ -34,11 +34,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location permission</string>
+	<string>App needs user location to detect air pollution around user area</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Location usage </string>
+	<string>App needs user location to detect air pollution around user area</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location when in use</string>
+	<string>App needs user location to detect air pollution around user area</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>

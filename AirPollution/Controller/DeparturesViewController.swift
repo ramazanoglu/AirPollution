@@ -64,8 +64,9 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
             alert.dismiss(animated: true, completion: nil)
         }))
         
-        self.present(alert, animated: true, completion: nil)
-        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

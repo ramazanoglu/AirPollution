@@ -313,12 +313,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
             mapSwitchButton.setTitle("Stations", for: .normal)
             
-            
-            for airData in self.airDataArray {
-                let annotation = AirDataAnnotation(airData: airData, valueTypeIndex: self.legendView.selectedRow(inComponent: 0))
+            if airDataArray != nil {
                 
-                
-                self.mapView.addAnnotation(annotation)
+                for airData in self.airDataArray {
+                    let annotation = AirDataAnnotation(airData: airData, valueTypeIndex: self.legendView.selectedRow(inComponent: 0))
+                    
+                    
+                    self.mapView.addAnnotation(annotation)
+                }
             }
         }
         
@@ -376,6 +378,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        activityIndicator.showActivityIndicator()
+        
         self.mapSwitchButton.isEnabled = false
         self.legendButton.isEnabled = false
         
@@ -399,6 +403,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         if (CLLocationManager.locationServicesEnabled())
         {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                print("No access")
+                
+                self.activityIndicator.hideActivityIndicator()
+                
+                showAlertDialog(message: "Location permissions are denied, please allow to use app")
+                
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Access")
+            }
+            
             locationManager = CLLocationManager()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -467,8 +483,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             alert.dismiss(animated: true, completion: nil)
         }))
         
-        self.present(alert, animated: true, completion: nil)
-        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+            
+        }
     }
     
 }
