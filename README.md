@@ -5,7 +5,7 @@ Final project for Udacity ios nanodegree program.
 
 App, mainly visualizes the air pollution data for **Stuttgart, Germany** city center and surrounding area and tracks user location to keep an air pollution history for user location.
 
-Users can also see if there is a Feinstaub alarm for Stuttgart and reach puplic transportation data for stations in Stuttgart.
+Users can also see if there is a Air Pollution Alarm (FeinstaubAlarm) for Stuttgart and reach puplic transportation data for stations in Stuttgart.
 
 ## MapViewController
 
@@ -17,8 +17,8 @@ Collected data from the sensors are shown in the map. User can click the squares
 
 On the right bottom of the screen, there is a legend button. User can switch between the different data types from sensors. These data types are:
 
-- P 10
-- P 2.5
+- P 10 (Particle Pollution https://airnow.gov/index.cfm?action=aqibasics.particle)
+- P 2.5 (Particle Pollution https://airnow.gov/index.cfm?action=aqibasics.particle)
 - Humidity
 - Temperature
 - Pressure
