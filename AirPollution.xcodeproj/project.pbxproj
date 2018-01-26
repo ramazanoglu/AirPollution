@@ -17,6 +17,7 @@
 		223F8BEB1FE2816800752BF2 /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BEA1FE2816800752BF2 /* StationAnnotation.swift */; };
 		223F8BED1FE2939600752BF2 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */; };
 		22409921201B4532008199AC /* ViewController+AlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22409920201B4532008199AC /* ViewController+AlertDialog.swift */; };
+		22409923201B46CB008199AC /* AirDataClient+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22409922201B46CB008199AC /* AirDataClient+Constants.swift */; };
 		224378CF1FDAC59C00F8C708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378CE1FDAC59C00F8C708 /* AppDelegate.swift */; };
 		224378D11FDAC59C00F8C708 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224378D01FDAC59C00F8C708 /* MapViewController.swift */; };
 		224378D41FDAC59C00F8C708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224378D21FDAC59C00F8C708 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		223F8BEA1FE2816800752BF2 /* StationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationAnnotation.swift; sourceTree = "<group>"; };
 		223F8BEC1FE2939600752BF2 /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		22409920201B4532008199AC /* ViewController+AlertDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+AlertDialog.swift"; sourceTree = "<group>"; };
+		22409922201B46CB008199AC /* AirDataClient+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirDataClient+Constants.swift"; sourceTree = "<group>"; };
 		224378CB1FDAC59C00F8C708 /* AirPollution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirPollution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		224378CE1FDAC59C00F8C708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		224378D01FDAC59C00F8C708 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				22C3B77D1FDACAB200FE9919 /* AirDataClient.swift */,
 				228740381FE13E7100D7B0EA /* VVSClient.swift */,
+				22409922201B46CB008199AC /* AirDataClient+Constants.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				22C3B77E1FDACAB200FE9919 /* AirDataClient.swift in Sources */,
 				2227C8312010B82800AB5E92 /* UserAirData+CoreDataProperties.swift in Sources */,
 				227F04B22010B34F007D58E1 /* CoreDataStack.swift in Sources */,
+				22409923201B46CB008199AC /* AirDataClient+Constants.swift in Sources */,
 				2227C8302010B82800AB5E92 /* UserAirData+CoreDataClass.swift in Sources */,
 				22532E3120122C5A00E12228 /* HistoryViewController.swift in Sources */,
 				2287403B1FE13EBF00D7B0EA /* Station.swift in Sources */,
