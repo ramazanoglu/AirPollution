@@ -250,7 +250,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         formatter.dateFormat = "HH:mm:ss"
         
         cell.timeLabel.text = formatter.string(from: userAirDataArray[indexPath.row].timestamp! as Date)
-        cell.pollutionLabel.text = String(userAirDataArray[indexPath.row].p10Value)
+        cell.pollutionLabel.text = "P10: " + String(userAirDataArray[indexPath.row].p10Value)
         
         
         return cell
