@@ -474,20 +474,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
-    
-    func showAlertDialog(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-            
-        }
-    }
+
     
 }
 

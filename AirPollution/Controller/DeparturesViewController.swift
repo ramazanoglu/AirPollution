@@ -57,18 +57,6 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    func showAlertDialog(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return departureArray.count
