@@ -81,9 +81,14 @@ class DeparturesViewController: UIViewController, UITableViewDelegate, UITableVi
         let departure = departureArray[indexPath.row]
         
         cell.departureLabel.text = departure.departureTime
-        cell.delayLabel.text = departure.delay + " min"
+        
+        if departure.delay != "0" {
+            cell.delayLabel.text = "+" + departure.delay + " min"
+        } else {
+            cell.delayLabel.text = ""
+        }
         cell.directionLabel.text = departure.direction
-        cell.lineLabel.text = departure.number
+        cell.lineLabel.text = "Line: " + departure.number
         
         if departure.delay != "0" {
             cell.backgroundColor = UIColor.red
